@@ -3,400 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Kayla Willis | Associate Professor at MCC</title>
-    <!-- Tailwind CSS CDN for modern utility styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f5f7fa',
-                            100: '#eaeef4',
-                            600: '#1e3a8a', /* Classic Navy */
-                            700: '#172e6f',
-                            800: '#0f1e4a',
-                            accent: '#d97706' /* Warm Amber */
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Google Fonts for premium typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Dr. Kayla Willis | McLennan Community College</title>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
+        /* Modern CSS Reset & Variables */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        .serif-title {
-            font-family: 'Playfair Display', Georgia, serif;
+
+        :root {
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #1a202c;
+            --text-muted: #4a5568;
+            --accent-color: #1e3a8a;
+            --accent-hover: #172e6f;
+            --btn-text: #ffffff;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            --border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent-color: #3b82f6;
+            --accent-hover: #60a5fa;
+            --btn-text: #1e293b;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            --border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.025em;
+        }
+
+        .position {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .institution {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 32px;
+        }
+
+        /* Button Link */
+        .btn-link {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--btn-text);
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-link:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.02);
+        }
+
+        .btn-link:active {
+            transform: scale(0.98);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            margin-top: 24px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: underline;
+            transition: color 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-main);
         }
     </style>
 </head>
-<body class="bg-brand-50 text-slate-800 flex flex-col min-h-screen">
+<body>
 
-    <!-- Header & Navigation -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo / Identity -->
-                <div class="flex-shrink-0">
-                    <a href="index.html" class="flex flex-col">
-                        <span class="text-xl font-bold tracking-tight text-brand-600 serif-title">Dr. Kayla Willis</span>
-                        <span class="text-xs tracking-widest uppercase text-slate-500 font-medium">Associate Professor &bull; MCC</span>
-                    </a>
-                </div>
-
-                <!-- Desktop Nav -->
-                <nav class="hidden md:flex space-x-8 text-sm font-medium">
-                    <a href="#about" class="text-slate-600 hover:text-brand-600 transition-colors">About Me</a>
-                    <a href="#research" class="text-slate-600 hover:text-brand-600 transition-colors">Research & Projects</a>
-                    <a href="#teaching" class="text-slate-600 hover:text-brand-600 transition-colors">Teaching</a>
-                    <a href="ed-phil.html" class="text-brand-accent hover:text-brand-800 transition-colors flex items-center gap-1">
-                        Educational Philosophy 
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </a>
-                    <a href="#contact" class="text-slate-600 hover:text-brand-600 transition-colors">Contact</a>
-                </nav>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="p-2 text-slate-600 hover:text-brand-600 focus:outline-none" aria-label="Toggle Menu">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path id="menu-icon-open" class="block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                            <path id="menu-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
-            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition-colors">About Me</a>
-            <a href="#research" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition-colors">Research & Projects</a>
-            <a href="#teaching" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition-colors">Teaching</a>
-            <a href="ed-phil.html" class="block px-3 py-2 rounded-md text-base font-semibold text-brand-accent hover:bg-amber-50 transition-colors">Educational Philosophy</a>
-            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition-colors">Contact</a>
-        </div>
-    </header>
-
-    <!-- Main Content Grid -->
-    <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- Main Profile Card -->
+    <main class="profile-card">
+        <h1>Dr. Kayla Willis</h1>
+        <p class="position">Associate Professor</p>
+        <p class="institution">McLennan Community College</p>
         
-        <!-- Hero Section -->
-        <section id="about" class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center mb-16 pt-4">
-            <!-- Left Portrait / Initial Block -->
-            <div class="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
-                <!-- Custom SVG Avatar representing academic leadership -->
-                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-800 p-1.5 shadow-xl hover:scale-[1.02] transition-transform duration-300">
-                    <div class="w-full h-full bg-white rounded-xl overflow-hidden flex items-center justify-center relative">
-                        <!-- Abstract Profile Design representation -->
-                        <svg class="w-full h-full text-slate-300" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                        <div class="absolute bottom-4 left-4 bg-brand-600 text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-md">
-                            Faculty at MCC
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Hero Copy -->
-            <div class="md:col-span-7 space-y-6">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 text-brand-700 uppercase tracking-wider">
-                    Associate Professor of Humanities & Social Sciences
-                </span>
-                <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight serif-title">
-                    Empowering Minds through Inquiry & Reflection
-                </h1>
-                <p class="text-lg text-slate-600 leading-relaxed">
-                    Hello and welcome. I am <strong class="text-brand-600 font-semibold">Dr. Kayla Willis</strong>, an Associate Professor at MCC. My scholarship focuses on critical pedagogy, historical perspectives in modern society, and developing inclusive curricula that build resilient, lifelong learners.
-                </p>
-                <p class="text-slate-600">
-                    With over a decade of teaching and research experience, I dedicate my classroom to turning concepts into creative action and equipping students with analytical toolkits to navigate complex structural landscapes.
-                </p>
-
-                <!-- Navigation Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="ed-phil.html" class="inline-flex items-center justify-center px-6 py-3.5 border border-transparent text-base font-medium rounded-xl shadow-lg text-white bg-brand-accent hover:bg-amber-600 hover:shadow-xl transform active:scale-95 transition-all duration-200">
-                        Read My Educational Philosophy
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                    </a>
-                    <a href="#contact" class="inline-flex items-center justify-center px-6 py-3.5 border border-slate-300 text-base font-medium rounded-xl text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-400 transform active:scale-95 transition-all duration-200">
-                        Get in Touch
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <hr class="border-slate-200 my-16" />
-
-        <!-- Research Highlights -->
-        <section id="research" class="space-y-10 scroll-mt-24">
-            <div class="max-w-3xl">
-                <h2 class="text-3xl font-bold tracking-tight text-slate-950 serif-title">Research & Publications</h2>
-                <p class="mt-2 text-slate-600">Investigating the crossroads of learning models, structural shifts, and diverse voices in systemic academic frameworks.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Research Card 1 -->
-                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600 mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                    </div>
-                    <span class="text-xs font-semibold uppercase tracking-wider text-brand-accent">Journal Article, 2025</span>
-                    <h3 class="text-xl font-bold text-slate-900 mt-2 mb-3">Re-defining Access in Modern Community College Curriculums</h3>
-                    <p class="text-slate-600 leading-relaxed text-sm mb-4">
-                        This empirical paper examines structural interventions designed to support first-generation college students navigating contemporary blended learning models.
-                    </p>
-                    <a href="#" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-800">
-                        View Publication details &rarr;
-                    </a>
-                </div>
-
-                <!-- Research Card 2 -->
-                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600 mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                    </div>
-                    <span class="text-xs font-semibold uppercase tracking-wider text-brand-accent">Monograph, 2023</span>
-                    <h3 class="text-xl font-bold text-slate-900 mt-2 mb-3">Narrative Pathways: Historical Critical Pedagogies</h3>
-                    <p class="text-slate-600 leading-relaxed text-sm mb-4">
-                        An exploration of systemic social philosophies and their impact on standard higher education structures throughout the late 20th century.
-                    </p>
-                    <a href="#" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-800">
-                        Read abstract and index &rarr;
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <hr class="border-slate-200 my-16" />
-
-        <!-- Teaching Section -->
-        <section id="teaching" class="space-y-10 scroll-mt-24">
-            <div class="max-w-3xl">
-                <h2 class="text-3xl font-bold tracking-tight text-slate-950 serif-title">Courses Taught</h2>
-                <p class="mt-2 text-slate-600">Guiding future analytical thinkers through diverse course configurations.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Course 1 -->
-                <div class="bg-slate-100 p-6 rounded-2xl border border-slate-200/60 relative overflow-hidden">
-                    <div class="absolute right-0 top-0 text-slate-200/40 -mr-6 -mt-6">
-                        <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-                    </div>
-                    <div class="relative z-10">
-                        <span class="text-xs font-semibold tracking-wider text-slate-500 uppercase">HUM 201</span>
-                        <h4 class="text-lg font-bold text-slate-900 mt-1 mb-2">Introduction to Cultural Dynamics</h4>
-                        <p class="text-sm text-slate-600">Examining the evolving constructs of communication, ritual, and societal systems across millennia.</p>
-                    </div>
-                </div>
-
-                <!-- Course 2 -->
-                <div class="bg-slate-100 p-6 rounded-2xl border border-slate-200/60 relative overflow-hidden">
-                    <div class="absolute right-0 top-0 text-slate-200/40 -mr-6 -mt-6">
-                        <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-                    </div>
-                    <div class="relative z-10">
-                        <span class="text-xs font-semibold tracking-wider text-slate-500 uppercase">SOC 110</span>
-                        <h4 class="text-lg font-bold text-slate-900 mt-1 mb-2">Social Theories of the Modern West</h4>
-                        <p class="text-sm text-slate-600">A foundational survey covering essential thinkers, from classic structuralists to contemporary critics.</p>
-                    </div>
-                </div>
-
-                <!-- Course 3 -->
-                <div class="bg-slate-100 p-6 rounded-2xl border border-slate-200/60 relative overflow-hidden">
-                    <div class="absolute right-0 top-0 text-slate-200/40 -mr-6 -mt-6">
-                        <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
-                    </div>
-                    <div class="relative z-10">
-                        <span class="text-xs font-semibold tracking-wider text-slate-500 uppercase">EDU 305</span>
-                        <h4 class="text-lg font-bold text-slate-900 mt-1 mb-2">Pedagogical Design & Action</h4>
-                        <p class="text-sm text-slate-600">Connecting learning theories explicitly to real-world lesson planning and classroom delivery structures.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Intermediary CTA to Educational Philosophy -->
-            <div class="bg-gradient-to-r from-brand-600 to-indigo-900 text-white p-8 md:p-12 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 mt-12">
-                <div class="space-y-3 max-w-xl text-center md:text-left">
-                    <h3 class="text-2xl md:text-3xl font-bold serif-title">How do these courses take shape?</h3>
-                    <p class="text-indigo-100 text-sm md:text-base leading-relaxed">
-                        Read more about the foundational strategies, reflective practices, and pedagogical framework I apply to active student-led classrooms.
-                    </p>
-                </div>
-                <a href="ed-phil.html" class="inline-flex items-center gap-2 bg-white text-brand-600 px-6 py-3.5 rounded-xl font-semibold shadow hover:bg-slate-50 transition-colors transform active:scale-95 duration-150 shrink-0">
-                    My Educational Philosophy
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                </a>
-            </div>
-        </section>
-
-        <hr class="border-slate-200 my-16" />
-
-        <!-- Contact Section -->
-        <section id="contact" class="space-y-10 scroll-mt-24">
-            <div class="max-w-3xl">
-                <h2 class="text-3xl font-bold tracking-tight text-slate-950 serif-title">Get In Touch</h2>
-                <p class="mt-2 text-slate-600">Whether you are an active student, research peer, or community collaborator—feel free to drop a line.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-                <!-- Contact info details -->
-                <div class="md:col-span-5 space-y-6">
-                    <div class="flex gap-4 items-start">
-                        <div class="p-3 bg-white rounded-xl border border-slate-100 shadow-sm text-brand-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Office Location</h4>
-                            <p class="text-slate-800 font-medium mt-1">Humanities Center, Suite 412</p>
-                            <p class="text-slate-600 text-sm">MCC Campus</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4 items-start">
-                        <div class="p-3 bg-white rounded-xl border border-slate-100 shadow-sm text-brand-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider">E-mail</h4>
-                            <p class="text-brand-600 hover:underline font-medium mt-1"><a href="mailto:k.willis@mcc.edu">k.willis@mcc.edu</a></p>
-                            <p class="text-slate-600 text-sm">Preferred contact method</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4 items-start">
-                        <div class="p-3 bg-white rounded-xl border border-slate-100 shadow-sm text-brand-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <div>
-                            <h4 class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Office Hours</h4>
-                            <p class="text-slate-800 font-medium mt-1">Tuesdays & Thursdays</p>
-                            <p class="text-slate-600 text-sm">1:00 PM – 3:30 PM (or by appointment)</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Custom Client Form (Non-Alert Javascript Handler) -->
-                <div class="md:col-span-7 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
-                    <form id="contact-form" class="space-y-5">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                            <div>
-                                <label for="name" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Your Name</label>
-                                <input type="text" id="name" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-all" placeholder="Jane Doe">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Email Address</label>
-                                <input type="email" id="email" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-all" placeholder="jane@example.com">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="subject" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Subject</label>
-                            <input type="text" id="subject" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-all" placeholder="Student Inquiry / Research Collaboration">
-                        </div>
-
-                        <div>
-                            <label for="message" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Message</label>
-                            <textarea id="message" rows="4" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-all" placeholder="Type your message here..."></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-brand-600 hover:bg-brand-700 focus:outline-none transition-colors">
-                            Send Message
-                        </button>
-
-                        <!-- Toast success response inside custom component (no alerts) -->
-                        <div id="form-feedback" class="hidden p-4 rounded-xl text-sm font-medium transition-all"></div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
+        <!-- Link to ed-phil.html -->
+        <a href="ed-phil.html" class="btn-link">Educational Philosophy</a>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="text-center md:text-left space-y-1">
-                <p class="font-bold text-white serif-title text-lg">Dr. Kayla Willis</p>
-                <p class="text-sm text-slate-500">Associate Professor of Humanities and Social Sciences &bull; MCC</p>
-            </div>
-            
-            <div class="flex flex-wrap justify-center gap-6 text-sm">
-                <a href="#about" class="hover:text-white transition-colors">About</a>
-                <a href="ed-phil.html" class="text-brand-accent hover:text-amber-400 font-medium transition-colors">Educational Philosophy</a>
-                <a href="#research" class="hover:text-white transition-colors">Research</a>
-                <a href="#teaching" class="hover:text-white transition-colors">Teaching</a>
-            </div>
+    <!-- Theme Switcher Utility -->
+    <button class="theme-toggle" id="themeBtn">Switch to Dark Mode</button>
 
-            <div class="text-xs text-slate-500">
-                &copy; 2026 Dr. Kayla Willis. All Rights Reserved.
-            </div>
-        </div>
-    </footer>
-
-    <!-- Interactive JS Scripts -->
     <script>
-        // Interactive Mobile Responsive Navigation Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const openIcon = document.getElementById('menu-icon-open');
-        const closeIcon = document.getElementById('menu-icon-close');
+        const themeBtn = document.getElementById('themeBtn');
+        
+        // Check system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+            document.body.setAttribute('data-theme', 'dark');
+            themeBtn.textContent = 'Switch to Light Mode';
+        }
 
-        menuBtn.addEventListener('click', () => {
-            const isExpanded = mobileMenu.classList.toggle('hidden');
-            openIcon.classList.toggle('hidden', !isExpanded);
-            closeIcon.classList.toggle('hidden', isExpanded);
-        });
-
-        // Close mobile menu when an anchor link is clicked
-        const navLinks = mobileMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                openIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-            });
-        });
-
-        // Handle Interactive Contact Form and display modern inline system feedback (never browser alert)
-        const contactForm = document.getElementById('contact-form');
-        const formFeedback = document.getElementById('form-feedback');
-
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Collect form data values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-
-            // Simple visual loading state trigger
-            formFeedback.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'bg-green-50', 'text-green-800');
-            formFeedback.classList.add('bg-slate-100', 'text-slate-800', 'block');
-            formFeedback.innerText = "Transmitting your message safely...";
-
-            // Mimicking secure transmit sequence
-            setTimeout(() => {
-                formFeedback.classList.remove('bg-slate-100', 'text-slate-800');
-                formFeedback.classList.add('bg-green-50', 'text-green-800');
-                formFeedback.innerHTML = `<strong>Success!</strong> Thank you, ${name}. Your inquiry regarding "${subject}" has been submitted successfully to Dr. Willis' MCC mailbox.`;
-                
-                // Reset form elements
-                contactForm.reset();
-            }, 1200);
+        // Toggle theme on click
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.body.removeAttribute('data-theme');
+                themeBtn.textContent = 'Switch to Dark Mode';
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeBtn.textContent = 'Switch to Light Mode';
+            }
         });
     </script>
 </body>
