@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDU 101: Philosophical Foundations of Education</title>
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        eduGreen: {
+                            50: '#f2f8f5',
+                            100: '#e1efe7',
+                            600: '#1e6b48',
+                            700: '#175338',
+                            800: '#113e2a',
+                        },
+                        eduAmber: {
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom animation effects */
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .progress-bar-transition {
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Custom scrollbar to match retro academic theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen">
+
+    <!-- Top Professor Welcome Banner -->
+    <header class="bg-eduGreen-800 text-white shadow-md relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-6xl mx-auto px-4 py-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-2 max-w-2xl">
+                <span class="bg-eduAmber-600 text-xs text-white uppercase font-bold tracking-wider px-3 py-1 rounded-full">EDU 101: Introduction to Teaching</span>
+                <h1 class="text-3xl md:text-4xl font-serif font-bold leading-tight">What is Your Teaching Philosophy?</h1>
+                <p class="text-slate-200 text-sm md:text-base leading-relaxed">
+                    Welcome, future educators! I'm Dr. Vance, your virtual Professor of Education. Before you design a lesson or grade an assignment, you must answer the biggest question in our field: <em class="italic text-eduAmber-100">What is the true purpose of school?</em> Let's discover your instincts together.
+                </p>
+            </div>
+            <!-- Professor Avatar Icon -->
+            <div class="flex items-center gap-3 bg-eduGreen-700/50 p-4 rounded-2xl border border-eduGreen-600 w-full md:w-auto">
+                <div class="w-12 h-12 bg-eduAmber-500 rounded-full flex items-center justify-center text-2xl font-bold shadow-inner">
+                    🎓
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm text-eduAmber-100">Meet Your Professor</h4>
+                    <p class="text-xs text-slate-200">Dr. Elena Vance</p>
+                    <p class="text-[10px] text-slate-300 italic">Community College Dept. of Ed.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+
+        <!-- Introductory Prompt & Core Concepts Concept Map -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <h2 class="text-xl font-bold text-eduGreen-800 flex items-center gap-2">
+                        <span>💡</span> The Foundations Spectrum
+                    </h2>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Educational philosophies exist on a rich spectrum. At one end, some argue that schools exist to preserve historical knowledge, culture, and foundational skills. At the other end, some believe school is an engine for discovery, personal growth, and societal change.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 bg-slate-50 rounded-xl border-l-4 border-emerald-600 space-y-1">
+                            <h4 class="font-bold text-xs text-emerald-800 uppercase tracking-wider">Teacher-Centered Paradigm</h4>
+                            <p class="text-xs text-slate-500">Focuses on passing down knowledge, structured curricula, discipline, and core cultural truths.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl border-l-4 border-blue-600 space-y-1">
+                            <h4 class="font-bold text-xs text-blue-800 uppercase tracking-wider">Student-Centered Paradigm</h4>
+                            <p class="text-xs text-slate-500">Focuses on experiences, active experimentation, real-world problems, and social transformation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 bg-eduGreen-50 rounded-xl border border-eduGreen-100 flex items-center gap-3">
+                    <span class="text-2xl">📝</span>
+                    <p class="text-xs text-eduGreen-700 font-medium">
+                        <strong>Ready to begin?</strong> Take our rapid Diagnostic Quiz below to instantly find your position on this spectrum!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Fast-Fact Flashcard Side Widget -->
+            <div class="bg-gradient-to-br from-slate-800 to-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between shadow-md relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-eduAmber-500/10 rounded-full blur-2xl"></div>
+                <div class="space-y-4 relative z-10">
+                    <div class="flex items-center gap-2">
+                        <span class="text-eduAmber-500 text-xl">✨</span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Classroom Terminology</span>
+                    </div>
+                    <div id="term-card" class="space-y-2 min-h-[140px] flex flex-col justify-center">
+                        <h3 id="term-title" class="text-lg font-bold text-eduAmber-100">Curriculum</h3>
+                        <p id="term-desc" class="text-xs text-slate-300 leading-relaxed">The set of subjects, lessons, and academic content taught in a school. From the Latin word for "running course."</p>
+                    </div>
+                </div>
+                <button onclick="rotateTerm()" class="w-full mt-4 py-2 bg-slate-700/80 hover:bg-slate-700 text-xs text-slate-200 font-medium rounded-xl border border-slate-600 transition duration-150 flex items-center justify-center gap-2">
+                    <span>🔄</span> Next Vocabulary Term
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 1: Interactive Self-Assessment Quiz -->
+        <section id="quiz-section" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="bg-slate-50 border-b border-slate-200 px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-800">Quiz: Find Your Teaching Philosophy Instinct</h2>
+                    <p class="text-xs text-slate-500">Answer these 5 quick classroom dilemmas to map your professional outlook.</p>
+                </div>
+                <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-slate-200 self-start sm:self-auto shadow-sm">
+                    <span class="w-2.5 h-2.5 bg-eduAmber-500 rounded-full animate-ping"></span>
+                    <span class="text-xs font-semibold text-slate-600">Progress: <span id="quiz-progress">1</span>/5</span>
+                </div>
+            </div>
+
+            <div class="p-6 md:p-8">
+                <!-- Single Question Display Panel -->
+                <div id="question-container" class="space-y-6">
+                    <div class="space-y-2">
+                        <span class="text-xs font-bold uppercase tracking-widest text-eduGreen-600" id="question-category">Category</span>
+                        <h3 class="text-lg md:text-xl font-bold text-slate-900 leading-snug" id="question-text">Question Prompt</h3>
+                    </div>
+
+                    <!-- Answers Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="answers-grid">
+                        <!-- Dynamically populated buttons -->
+                    </div>
+                </div>
+
+                <!-- Live-Updating Chart and Dashboard View (Initially Hidden) -->
+                <div id="results-container" class="hidden space-y-8 fade-in">
+                    <div class="bg-eduGreen-50 rounded-2xl p-6 border border-eduGreen-100 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                        <div class="lg:col-span-1 text-center lg:text-left space-y-2">
+                            <span class="text-2xl">⚡</span>
+                            <h3 class="text-xl font-serif font-bold text-eduGreen-800">Your Primary Alignment:</h3>
+                            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900" id="primary-philosophy-title">Determining...</h2>
+                            <p class="text-xs text-slate-600 leading-relaxed" id="primary-philosophy-summary">
+                                Your answers suggest that you align closely with this perspective. Read your detailed results profile below!
+                            </p>
+                        </div>
+                        <!-- Beautiful CSS Dynamic Bar Chart Alignment Breakdown -->
+                        <div class="lg:col-span-2 space-y-4 bg-white p-5 rounded-xl border border-slate-200 shadow-inner">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Philosophy Spectrum Breakdown</h4>
+                            <div class="space-y-3">
+                                <!-- Perennialism bar -->
+                                <div class="space-y-1">
+                                    <div class="flex justify-between text-xs font-medium">
+                                        <span class="text-amber-800 font-semibold flex items-center gap-1">🏛️ Perennialism <span class="text-[10px] text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded">Teacher-Centered</span></span>
+                                        <span id="perennialism-pct">0%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 h-3.5 rounded-full overflow-hidden">
+                                        <div id="perennialism-bar" class="bg-gradient-to-r from-amber-400 to-amber-500 h-full progress-bar-transition" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <!-- Essentialism bar -->
+                                <div class="space-y-1">
+                                    <div class="flex justify-between text-xs font-medium">
+                                        <span class="text-emerald-800 font-semibold flex items-center gap-1">📐 Essentialism <span class="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">Teacher-Centered</span></span>
+                                        <span id="essentialism-pct">0%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 h-3.5 rounded-full overflow-hidden">
+                                        <div id="essentialism-bar" class="bg-gradient-to-r from-emerald-500 to-emerald-600 h-full progress-bar-transition" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <!-- Progressivism bar -->
+                                <div class="space-y-1">
+                                    <div class="flex justify-between text-xs font-medium">
+                                        <span class="text-blue-800 font-semibold flex items-center gap-1">🌱 Progressivism <span class="text-[10px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Student-Centered</span></span>
+                                        <span id="progressivism-pct">0%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 h-3.5 rounded-full overflow-hidden">
+                                        <div id="progressivism-bar" class="bg-gradient-to-r from-blue-500 to-blue-600 h-full progress-bar-transition" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <!-- Social Reconstructionism bar -->
+                                <div class="space-y-1">
+                                    <div class="flex justify-between text-xs font-medium">
+                                        <span class="text-indigo-800 font-semibold flex items-center gap-1">✊ Social Reconstructionism <span class="text-[10px] text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">Student-Centered</span></span>
+                                        <span id="reconstructionism-pct">0%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 h-3.5 rounded-full overflow-hidden">
+                                        <div id="reconstructionism-bar" class="bg-gradient-to-r from-indigo-500 to-indigo-600 h-full progress-bar-transition" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 items-center justify-between bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <span class="text-xs text-slate-500">You can adjust your inputs by retaking the quiz at any time. Let's see how each paradigm looks in detail below!</span>
+                        <button onclick="resetQuiz()" class="px-4 py-2 bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold rounded-lg transition duration-150 shadow-sm flex items-center gap-2">
+                            <span>🔄</span> Retake Diagnostic
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Interactive Deep-Dive Explorer -->
+        <section class="space-y-6">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-eduAmber-600">Interactive Curriculum</span>
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-slate-950">Explore the Four Major Philosophies</h2>
+                <p class="text-slate-500 text-sm">Click each card to reveal the complete details of how they transform classrooms, design lesson plans, and structure exams.</p>
+            </div>
+
+            <!-- Quadrant Selector / Interactive Tabs -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 bg-slate-200/60 p-1.5 rounded-xl border border-slate-300/50">
+                <button onclick="switchTab('perennialism')" id="tab-perennialism" class="tab-btn py-3 px-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-200 shadow-sm bg-white text-slate-800 border border-slate-200">
+                    🏛️ Perennialism
+                </button>
+                <button onclick="switchTab('essentialism')" id="tab-essentialism" class="tab-btn py-3 px-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900">
+                    📐 Essentialism
+                </button>
+                <button onclick="switchTab('progressivism')" id="tab-progressivism" class="tab-btn py-3 px-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900">
+                    🌱 Progressivism
+                </button>
+                <button onclick="switchTab('reconstructionism')" id="tab-reconstructionism" class="tab-btn py-3 px-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900">
+                    ✊ Reconstructionism
+                </button>
+            </div>
+
+            <!-- Dynamic Detail Explorer Panel -->
+            <div id="explorer-panel" class="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-8 fade-in">
+                <!-- Data will dynamic overwrite this container -->
+            </div>
+        </section>
+
+        <!-- Section 3: The Virtual Classroom Designer (Interactive Sandbox) -->
+        <section class="bg-gradient-to-br from-eduGreen-700 to-eduGreen-800 text-white rounded-2xl p-6 md:p-8 shadow-md relative overflow-hidden">
+            <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]"></div>
+            
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
+                <!-- Left Hand Options Panel -->
+                <div class="lg:col-span-3 space-y-6 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <span class="bg-eduAmber-500/20 text-eduAmber-100 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-eduAmber-500/30">Teaching Laboratory</span>
+                        <h2 class="text-2xl md:text-3xl font-serif font-bold">The Virtual Classroom Designer</h2>
+                        <p class="text-slate-200 text-xs md:text-sm leading-relaxed">
+                            How does a philosophy translate to actual school decisions? Toggle the components below to construct your ideal learning environment, and watch the analyzer compute how your design aligns with these structures in real-time.
+                        </p>
+                    </div>
+
+                    <!-- Sandbox Choice Switches -->
+                    <div class="space-y-4">
+                        <!-- Switch 1: Seating Layout -->
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-300">Classroom Desk Layout</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="setSandboxOption('seating', 'rows')" id="sb-seating-rows" class="sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200">
+                                    🪑 Traditional Rows
+                                </button>
+                                <button onclick="setSandboxOption('seating', 'clusters')" id="sb-seating-clusters" class="sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200">
+                                    🔄 Active Clusters
+                                </button>
+                                <button onclick="setSandboxOption('seating', 'circle')" id="sb-seating-circle" class="sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200">
+                                    ⭕ Great Circle
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Switch 2: Primary Content Focus -->
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-300">Primary Curriculum Focus</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="setSandboxOption('curriculum', 'greatbooks')" id="sb-curriculum-greatbooks" class="sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200">
+                                    📚 Great Books
+                                </button>
+                                <button onclick="setSandboxOption('curriculum', 'stemskills')" id="sb-curriculum-stemskills" class="sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200">
+                                    💻 Practical Skills
+                                </button>
+                                <button onclick="setSandboxOption('curriculum', 'community')" id="sb-curriculum-community" class="sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200">
+                                    🌍 Social Inequity
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Switch 3: Mode of Assessment -->
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-300">Main Form of Evaluation</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="setSandboxOption('assessment', 'standard')" id="sb-assessment-standard" class="sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200">
+                                    📝 Standardized Exam
+                                </button>
+                                <button onclick="setSandboxOption('assessment', 'project')" id="sb-assessment-project" class="sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200">
+                                    🛠️ Collaborative Project
+                                </button>
+                                <button onclick="setSandboxOption('assessment', 'action')" id="sb-assessment-action" class="sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200">
+                                    ✊ Local Campaign
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hand Alignment Outcome Monitor -->
+                <div class="lg:col-span-2 bg-slate-900/60 border border-eduGreen-600/50 p-6 rounded-2xl flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="text-eduAmber-500">🔍</span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-slate-300">Real-Time Alignment</span>
+                        </div>
+                        
+                        <!-- Mini dynamic output screen of current choices -->
+                        <div class="bg-black/40 rounded-xl p-4 border border-slate-700 space-y-3 font-mono text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Layout:</span>
+                                <span class="text-emerald-400 font-semibold" id="sandbox-out-seating">Standard Rows</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Curriculum:</span>
+                                <span class="text-emerald-400 font-semibold" id="sandbox-out-curriculum">Great Books</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Assessing:</span>
+                                <span class="text-emerald-400 font-semibold" id="sandbox-out-assessment">Standardized Exam</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Computed alignment percentage sliders -->
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-semibold text-slate-300">Resulting Alignment Model:</h4>
+                        
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-[11px] font-medium text-slate-300">
+                                <span>🏛️ Perennialist</span>
+                                <span id="sb-per-val">0%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div id="sb-per-bar" class="h-full bg-amber-500 progress-bar-transition" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-[11px] font-medium text-slate-300">
+                                <span>📐 Essentialist</span>
+                                <span id="sb-ess-val">0%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div id="sb-ess-bar" class="h-full bg-emerald-500 progress-bar-transition" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-[11px] font-medium text-slate-300">
+                                <span>🌱 Progressivist</span>
+                                <span id="sb-prog-val">0%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div id="sb-prog-bar" class="h-full bg-blue-500 progress-bar-transition" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-[11px] font-medium text-slate-300">
+                                <span>✊ Social Reconstructionist</span>
+                                <span id="sb-recon-val">0%</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div id="sb-recon-bar" class="h-full bg-indigo-500 progress-bar-transition" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Interactive Philosophy Statement Builder -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
+            <div class="space-y-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-eduGreen-600">Reflection Practice</span>
+                <h2 class="text-2xl font-serif font-bold text-slate-950">Draft Your Personal Philosophy Statement</h2>
+                <p class="text-slate-500 text-sm">
+                    In almost every educational job application, you will be required to submit a "Philosophy of Education Statement." Let's build your very first interactive template right here.
+                </p>
+            </div>
+
+            <!-- Guided Input Form -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                <div class="space-y-4">
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-600">My main purpose as a future teacher is to...</label>
+                        <select id="stmt-purpose" onchange="generateStatement()" class="w-full text-sm bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-eduGreen-600">
+                            <option value="">-- Choose an option or design your own --</option>
+                            <option value="cultivate the intellect by examining everlasting universal ideas and timeless masterpieces">cultivate intellectual depth by teaching universal, enduring truths</option>
+                            <option value="instill core traditional academic disciplines, values, and essential working skills">train students in essential skills and practical cultural literacy</option>
+                            <option value="engage students in inquiry-driven collaborative learning based on real-world experiences">guide students to learn through collaborative experience and personal interests</option>
+                            <option value="empower students with critical consciousness to transform inequities in local communities">awaken critical consciousness in learners to repair social injustices</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-600">In my classroom, students learn best when they...</label>
+                        <select id="stmt-learning" onchange="generateStatement()" class="w-full text-sm bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-eduGreen-600">
+                            <option value="">-- Choose an option or design your own --</option>
+                            <option value="delve deeply into classical texts, engaging in structured Socratic dialogue with peers">delve into timeless classical texts and philosophical seminars</option>
+                            <option value="practice academic fundamentals diligently, respecting the wisdom of expert curriculum and instruction">practice hard skills to build essential knowledge foundations</option>
+                            <option value="collaborate on projects, experiment through active exploration, and solve problems practically">experiment hands-on, discovering knowledge dynamically</option>
+                            <option value="examine actual socioeconomic issues in the community, working to solve local challenges">analyze local disparities and design strategies for structural reform</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Therefore, I intend to define my primary classroom environment as...</label>
+                        <select id="stmt-environment" onchange="generateStatement()" class="w-full text-sm bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-eduGreen-600">
+                            <option value="">-- Choose an option or design your own --</option>
+                            <option value="an orderly, focused academy where deep universal ideas are systematically and logically debated.">an organized, focused forum for analytical debate.</option>
+                            <option value="a rigorous, disciplined academic laboratory where cultural literacy and high standards are consistently modeled.">a high-standard lab for learning real-world disciplines.</option>
+                            <option value="a democratic, flexible space where students work dynamically in groups to navigate open-ended challenges.">a flexible democratic ecosystem driven by student inquiry.</option>
+                            <option value="an active workshop of civic transformation, empowering students to stand as equal agents of systemic change.">an active hub for civic engagement and local action planning.</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Preview Board -->
+                <div class="bg-amber-50 rounded-2xl p-6 border border-amber-200 flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between border-b border-amber-200 pb-2">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-amber-800 font-mono">Live Draft Preview</span>
+                            <span class="text-amber-600 text-sm">✍️</span>
+                        </div>
+                        <p id="stmt-preview-text" class="text-sm md:text-base font-serif italic text-slate-700 leading-relaxed min-h-[120px]">
+                            As you select options from the menus on the left, your professional philosophy statement will write itself right here! Let's build your voice as a future educator...
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <button onclick="copyStatement()" class="px-3.5 py-1.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold rounded-lg shadow-sm transition duration-150 flex items-center gap-1.5">
+                            <span>📋</span> Copy Statement Text
+                        </button>
+                        <button onclick="resetStatement()" class="px-3.5 py-1.5 bg-white border border-amber-300 hover:bg-amber-100 text-amber-800 text-xs font-semibold rounded-lg transition duration-150">
+                            Reset Builder
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Master Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div class="space-y-2">
+                <span class="text-white font-serif font-bold tracking-wide">EDU 101</span>
+                <p class="text-xs text-slate-500 leading-relaxed">Dedicated to preparing the next generation of public, charter, and private school educators to shape the minds of tomorrow with thoughtfulness and philosophical depth.</p>
+            </div>
+            <div class="space-y-2 text-xs">
+                <h4 class="font-semibold text-white">Curriculum Links</h4>
+                <ul class="space-y-1.5 text-slate-500">
+                    <li>💡 Teacher-Centered vs Student-Centered</li>
+                    <li>📚 Historical Foundations of Schooling</li>
+                    <li>🌟 Professional Portfolio Development</li>
+                </ul>
+            </div>
+            <div class="space-y-2 text-xs">
+                <h4 class="font-semibold text-white">Professor's Tip</h4>
+                <p class="text-slate-500 leading-relaxed italic">"Do not lock yourself into one box. Outstanding teachers borrow the rigor of Essentialism, the depth of Perennialism, the engagement of Progressivism, and the equity focus of Reconstructionism."</p>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-slate-800/80 text-center text-[11px] text-slate-600">
+            &copy; 2026 Foundations of Education Virtual Portal. Designed for Incoming Future Educators.
+        </div>
+    </footer>
+
+    <script>
+        // Terminology Rotate Data Array
+        const terms = [
+            {
+                title: "Pedagogy",
+                desc: "The method and practice of teaching, especially as an academic subject or theoretical concept. It is essentially 'how' instruction is executed."
+            },
+            {
+                title: "Curriculum",
+                desc: "The set of subjects, lessons, and academic content taught in a school. From the Latin word for 'running course.'"
+            },
+            {
+                title: "Epistemology",
+                desc: "The branch of philosophy that investigates the origin, nature, methods, and limits of human knowledge. It answers: 'How do we know what is true?'"
+            },
+            {
+                title: "Socratic Method",
+                desc: "A cooperative argumentative dialogue between teacher and students, stimulated by continuous questioning to draw out underlying beliefs."
+            },
+            {
+                title: "Cultural Literacy",
+                desc: "The ability to understand and participate fluently in a given culture, utilizing standard baseline ideas, histories, and idioms."
+            }
+        ];
+        let currentTermIdx = 0;
+
+        function rotateTerm() {
+            const container = document.getElementById('term-card');
+            // Flash animation style
+            container.style.opacity = 0;
+            setTimeout(() => {
+                currentTermIdx = (currentTermIdx + 1) % terms.length;
+                document.getElementById('term-title').innerText = terms[currentTermIdx].title;
+                document.getElementById('term-desc').innerText = terms[currentTermIdx].desc;
+                container.style.opacity = 1;
+            }, 200);
+        }
+
+        // Quiz State and Data
+        const questions = [
+            {
+                category: "CLASSROOM DESIGN",
+                text: "What would the seating layout look like in your dream classroom?",
+                answers: [
+                    { text: "🏛️ Circular seminar table promoting intellectual conversation.", value: "perennialism" },
+                    { text: "📐 Uniform columns and rows facing the front podium for focus.", value: "essentialism" },
+                    { text: "🌱 Clusters of modern desks optimized for teamwork.", value: "progressivism" },
+                    { text: "✊ Flexible layout designed for active community campaigns.", value: "reconstructionism" }
+                ]
+            },
+            {
+                category: "LESSON FOCUS",
+                text: "If you could only choose one primary focus for your curriculum, what would it be?",
+                answers: [
+                    { text: "🏛️ Great classic literature and enduring mathematical logic.", value: "perennialism" },
+                    { text: "📐 Essential reading, writing, and practical computing skills.", value: "essentialism" },
+                    { text: "🌱 Hands-on science projects exploring real-life applications.", value: "progressivism" },
+                    { text: "✊ Deep analysis of systemic inequalities and social actions.", value: "reconstructionism" }
+                ]
+            },
+            {
+                category: "STUDENT SUPPORT",
+                text: "A student asks you: 'Why do we have to learn this content, teacher?' You say:",
+                answers: [
+                    { text: "🏛️ 'To cultivate your intellect and inherit humanity's greatest ideas.'", value: "perennialism" },
+                    { text: "📐 'To gain foundational skills necessary for a strong professional career.'", value: "essentialism" },
+                    { text: "🌱 'Because we are testing a real hypothesis you want solved.'", value: "progressivism" },
+                    { text: "✊ 'To equip you to challenge and reform systemic injustices.'", value: "reconstructionism" }
+                ]
+            },
+            {
+                category: "BEHAVIOR MANAGEMENT",
+                text: "How do you view school rules and classroom culture?",
+                answers: [
+                    { text: "🏛️ They cultivate classical virtues like wisdom, honor, and courage.", value: "perennialism" },
+                    { text: "📐 They ensure discipline, order, and absolute respect for learning.", value: "essentialism" },
+                    { text: "🌱 They are cooperatively developed by the class to form a democracy.", value: "progressivism" },
+                    { text: "✊ They should be analyzed critically so that unfair codes are safely reformed.", value: "reconstructionism" }
+                ]
+            },
+            {
+                category: "GRADING & TESTING",
+                text: "What is your main strategy for evaluating student growth?",
+                answers: [
+                    { text: "🏛️ Structured essays and intense oral examinations.", value: "perennialism" },
+                    { text: "📐 Regular, standardized exams assessing core subject mastery.", value: "essentialism" },
+                    { text: "🌱 Experiential progress reports and portfolio presentations.", value: "progressivism" },
+                    { text: "✊ Dynamic activism reports detailing local equity efforts.", value: "reconstructionism" }
+                ]
+            }
+        ];
+
+        let quizIndex = 0;
+        let scores = { perennialism: 0, essentialism: 0, progressivism: 0, reconstructionism: 0 };
+
+        function loadQuestion() {
+            if (quizIndex < questions.length) {
+                const currentQ = questions[quizIndex];
+                document.getElementById('quiz-progress').innerText = quizIndex + 1;
+                document.getElementById('question-category').innerText = currentQ.category;
+                document.getElementById('question-text').innerText = currentQ.text;
+                
+                const grid = document.getElementById('answers-grid');
+                grid.innerHTML = '';
+                
+                currentQ.answers.forEach(ans => {
+                    const btn = document.createElement('button');
+                    btn.className = "w-full text-left p-4 rounded-xl border border-slate-200 hover:border-eduGreen-600 hover:bg-slate-50 text-xs md:text-sm font-medium transition duration-150 shadow-sm flex items-center justify-between group";
+                    btn.innerHTML = `
+                        <span>${ans.text}</span>
+                        <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-150 text-eduGreen-600 font-bold">Select &rarr;</span>
+                    `;
+                    btn.onclick = () => handleAnswer(ans.value);
+                    grid.appendChild(btn);
+                });
+            } else {
+                showResults();
+            }
+        }
+
+        function handleAnswer(val) {
+            scores[val]++;
+            quizIndex++;
+            loadQuestion();
+        }
+
+        function showResults() {
+            document.getElementById('question-container').classList.add('hidden');
+            document.getElementById('results-container').classList.remove('hidden');
+
+            // Calculate percentages
+            const total = Object.values(scores).reduce((a, b) => a + b, 0);
+            const pPct = Math.round((scores.perennialism / total) * 100);
+            const ePct = Math.round((scores.essentialism / total) * 100);
+            const prPct = Math.round((scores.progressivism / total) * 100);
+            const rPct = Math.round((scores.reconstructionism / total) * 100);
+
+            // Animate local progress bars
+            document.getElementById('perennialism-bar').style.width = pPct + "%";
+            document.getElementById('perennialism-pct').innerText = pPct + "%";
+
+            document.getElementById('essentialism-bar').style.width = ePct + "%";
+            document.getElementById('essentialism-pct').innerText = ePct + "%";
+
+            document.getElementById('progressivism-bar').style.width = prPct + "%";
+            document.getElementById('progressivism-pct').innerText = prPct + "%";
+
+            document.getElementById('reconstructionism-bar').style.width = rPct + "%";
+            document.getElementById('reconstructionism-pct').innerText = rPct + "%";
+
+            // Figure out primary alignment
+            let highestVal = -1;
+            let primaryKey = '';
+            for (const [key, val] of Object.entries(scores)) {
+                if (val > highestVal) {
+                    highestVal = val;
+                    primaryKey = key;
+                }
+            }
+
+            let title = "";
+            let summary = "";
+            if (primaryKey === "perennialism") {
+                title = "Classic Perennialist 🏛️";
+                summary = "You believe that education should focus on timeless, universal truths and ideas. You value intellectual discipline, critical reading of great masterpieces, and classic academic traditions.";
+            } else if (primaryKey === "essentialism") {
+                title = "Practical Essentialist 📐";
+                summary = "You believe schools should teach basic fundamentals and practical skills. You prioritize orderly, organized learning, rigorous testing, and equipping students with highly functional workplace talent.";
+            } else if (primaryKey === "progressivism") {
+                title = "Dynamic Progressivist 🌱";
+                summary = "You believe students learn best when engaged in active experimentation, scientific inquiry, and collaborative real-world puzzles. You value child-centric agency and hands-on projects.";
+            } else {
+                title = "Social Reconstructionist ✊";
+                summary = "You believe that schools should serve as direct engines for building a fairer society. You focus on systemic issues, critical reasoning, and training active civic organizers.";
+            }
+
+            document.getElementById('primary-philosophy-title').innerText = title;
+            document.getElementById('primary-philosophy-summary').innerText = summary;
+
+            // Automatically focus/switch corresponding tab in deep dive explorer
+            switchTab(primaryKey);
+        }
+
+        function resetQuiz() {
+            scores = { perennialism: 0, essentialism: 0, progressivism: 0, reconstructionism: 0 };
+            quizIndex = 0;
+            document.getElementById('results-container').classList.add('hidden');
+            document.getElementById('question-container').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        // Deep-Dive Explorer Tab Data
+        const explorerData = {
+            perennialism: {
+                title: "🏛️ Perennialism",
+                subtitle: "Enduring Ideas and Classic Truths",
+                badge: "Teacher-Centered Paradigm",
+                badgeColor: "bg-amber-100 text-amber-800 border-amber-200",
+                concept: "Everlasting, timeless truths don't change. Therefore, the core of human knowledge remains stable across centuries.",
+                role: "The ultimate modern mentor—guiding students to critique complex classic arguments and master analytical logic.",
+                assessment: "Socratic questioning seminars, structured essays, and logical debate defenses.",
+                example: "Instead of simple textbooks, a Perennialist high school class reads 'Antigone' or Plato's 'Republic' directly, questioning justice.",
+                critique: "Can be historically rigid, sometimes excluding diverse global perspectives or modern hands-on technical needs."
+            },
+            essentialism: {
+                title: "📐 Essentialism",
+                subtitle: "Core Academic Skills and High Standard Achievement",
+                badge: "Teacher-Centered Paradigm",
+                badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
+                concept: "Students must master basic cultural knowledge, mathematical logic, and disciplined personal values to be productive citizens.",
+                role: "An instructional authority who models professional expertise, clear guidelines, and highly structured skill-building.",
+                assessment: "Standardized performance evaluations, factual exams, and disciplined skills checklists.",
+                example: "A class systematically learns standard academic concepts, practicing coding paradigms or algebraic equations via step-by-step masteries.",
+                critique: "Can emphasize rote memorization over creative problem solving, occasionally leaving little room for dynamic inquiry."
+            },
+            progressivism: {
+                title: "🌱 Progressivism",
+                subtitle: "Inquiry-Based Learning and Living Democracy",
+                badge: "Student-Centered Paradigm",
+                badgeColor: "bg-blue-100 text-blue-800 border-blue-200",
+                concept: "Education is not preparation for life; education is life itself. Learning should follow a child's natural curiosity.",
+                role: "A facilitator or guide who curates scientific experiments, interactive challenges, and group inquiry puzzles.",
+                assessment: "Ongoing portfolio evaluations, collaborative projects, and reflective learning journals.",
+                example: "Students build a simulated ecosystem in the school courtyard, applying biology, math, and writing to track real progress.",
+                critique: "Without extremely structured guides, student curiosity may sometimes overlook foundational prerequisites."
+            },
+            reconstructionism: {
+                title: "✊ Social Reconstructionism",
+                subtitle: "Education as an Engine for Civic Equity",
+                badge: "Student-Centered Paradigm",
+                badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-200",
+                concept: "The true purpose of education is to reconstruct society, addressing systematic oppression, prejudice, and economic inequality.",
+                role: "A co-investigator who guides students to recognize and evaluate social injustice, motivating structural change.",
+                assessment: "Evaluating civic project results, social research portfolios, and active local community impacts.",
+                example: "High school students analyze the history of redlining in local neighborhoods and construct policy proposals for the city zoning board.",
+                critique: "Critics argue it can border on ideological indoctrination or focus too much on social action at the cost of essential math/science foundations."
+            }
+        };
+
+        function switchTab(philosophyKey) {
+            // Adjust button states
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn py-3 px-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-slate-900";
+            });
+            
+            const activeBtn = document.getElementById(`tab-${philosophyKey}`);
+            if (activeBtn) {
+                activeBtn.className = "tab-btn py-3 px-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-200 shadow-sm bg-white text-slate-800 border border-slate-200";
+            }
+
+            // Repopulate content panel
+            const data = explorerData[philosophyKey];
+            const panel = document.getElementById('explorer-panel');
+            
+            // Subtle transition flash
+            panel.style.opacity = 0;
+            
+            setTimeout(() => {
+                panel.innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-1 space-y-4">
+                            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold border ${data.badgeColor}">${data.badge}</span>
+                            <h2 class="text-2xl font-serif font-bold text-slate-900">${data.title}</h2>
+                            <p class="text-sm text-slate-500 font-medium italic">${data.subtitle}</p>
+                            
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-1">
+                                <span class="text-xs text-slate-400 font-bold uppercase tracking-wider">The Big Concept</span>
+                                <p class="text-xs text-slate-600 leading-relaxed">${data.concept}</p>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-2 space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="p-4 bg-slate-50/60 rounded-xl border border-slate-200 space-y-1">
+                                    <span class="text-xs text-slate-400 font-bold uppercase tracking-wider">Role of the Educator</span>
+                                    <p class="text-xs text-slate-700 font-medium leading-relaxed">${data.role}</p>
+                                </div>
+                                <div class="p-4 bg-slate-50/60 rounded-xl border border-slate-200 space-y-1">
+                                    <span class="text-xs text-slate-400 font-bold uppercase tracking-wider">Primary Assessment Style</span>
+                                    <p class="text-xs text-slate-700 font-medium leading-relaxed">${data.assessment}</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-eduGreen-50/50 rounded-xl border border-eduGreen-100 space-y-1">
+                                <span class="text-xs text-eduGreen-700 font-bold uppercase tracking-wider flex items-center gap-1">🏫 Classroom Case Study</span>
+                                <p class="text-xs text-slate-700 leading-relaxed">${data.example}</p>
+                            </div>
+
+                            <div class="p-4 bg-rose-50 rounded-xl border border-rose-100 space-y-1">
+                                <span class="text-xs text-rose-700 font-bold uppercase tracking-wider flex items-center gap-1">⚠️ The Critic's Corner</span>
+                                <p class="text-xs text-rose-800 leading-relaxed">${data.critique}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                panel.style.opacity = 1;
+            }, 150);
+        }
+
+        // Sandbox Simulator Logic
+        let sandboxState = {
+            seating: 'rows',
+            curriculum: 'greatbooks',
+            assessment: 'standard'
+        };
+
+        function setSandboxOption(category, option) {
+            sandboxState[category] = option;
+            
+            // Adjust sandbox buttons active visual state
+            const parentContainerId = `sb-seating-${option}`;
+            // Remove active style from siblings, add to self
+            if (category === 'seating') {
+                ['rows', 'clusters', 'circle'].forEach(item => {
+                    const btn = document.getElementById(`sb-seating-${item}`);
+                    btn.className = "sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200";
+                });
+                const activeBtn = document.getElementById(`sb-seating-${option}`);
+                activeBtn.className = "sb-btn py-2 text-xs bg-eduAmber-500 text-slate-950 font-bold rounded-lg border border-eduAmber-600";
+                document.getElementById('sandbox-out-seating').innerText = option === 'rows' ? 'Standard Rows' : option === 'clusters' ? 'Active Clusters' : 'Great Circle';
+            } else if (category === 'curriculum') {
+                ['greatbooks', 'stemskills', 'community'].forEach(item => {
+                    const btn = document.getElementById(`sb-curriculum-${item}`);
+                    btn.className = "sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200";
+                });
+                const activeBtn = document.getElementById(`sb-curriculum-${option}`);
+                activeBtn.className = "sb-btn py-2 text-xs bg-eduAmber-500 text-slate-950 font-bold rounded-lg border border-eduAmber-600";
+                document.getElementById('sandbox-out-curriculum').innerText = option === 'greatbooks' ? 'Great Books' : option === 'stemskills' ? 'Practical Skills' : 'Social Inequity';
+            } else {
+                ['standard', 'project', 'action'].forEach(item => {
+                    const btn = document.getElementById(`sb-assessment-${item}`);
+                    btn.className = "sb-btn py-2 text-xs bg-eduGreen-800 border border-eduGreen-600 hover:bg-eduGreen-700 font-medium rounded-lg text-slate-200";
+                });
+                const activeBtn = document.getElementById(`sb-assessment-${option}`);
+                activeBtn.className = "sb-btn py-2 text-xs bg-eduAmber-500 text-slate-950 font-bold rounded-lg border border-eduAmber-600";
+                document.getElementById('sandbox-out-assessment').innerText = option === 'standard' ? 'Standard Exam' : option === 'project' ? 'Collaborative Project' : 'Local Campaign';
+            }
+
+            calculateSandboxAlignment();
+        }
+
+        function calculateSandboxAlignment() {
+            // Define basic vector mappings for options
+            let scoreMatrix = {
+                per: 0,
+                ess: 0,
+                prog: 0,
+                recon: 0
+            };
+
+            // Seating adjustments
+            if (sandboxState.seating === 'rows') {
+                scoreMatrix.ess += 45;
+                scoreMatrix.per += 35;
+                scoreMatrix.prog += 10;
+                scoreMatrix.recon += 10;
+            } else if (sandboxState.seating === 'clusters') {
+                scoreMatrix.prog += 50;
+                scoreMatrix.recon += 30;
+                scoreMatrix.ess += 15;
+                scoreMatrix.per += 5;
+            } else { // circle
+                scoreMatrix.per += 45;
+                scoreMatrix.recon += 35;
+                scoreMatrix.prog += 15;
+                scoreMatrix.ess += 5;
+            }
+
+            // Curriculum adjustments
+            if (sandboxState.curriculum === 'greatbooks') {
+                scoreMatrix.per += 50;
+                scoreMatrix.ess += 25;
+                scoreMatrix.prog += 15;
+                scoreMatrix.recon += 10;
+            } else if (sandboxState.curriculum === 'stemskills') {
+                scoreMatrix.ess += 55;
+                scoreMatrix.prog += 30;
+                scoreMatrix.per += 10;
+                scoreMatrix.recon += 5;
+            } else { // community
+                scoreMatrix.recon += 60;
+                scoreMatrix.prog += 25;
+                scoreMatrix.per += 10;
+                scoreMatrix.ess += 5;
+            }
+
+            // Assessment adjustments
+            if (sandboxState.assessment === 'standard') {
+                scoreMatrix.ess += 50;
+                scoreMatrix.per += 35;
+                scoreMatrix.prog += 10;
+                scoreMatrix.recon += 5;
+            } else if (sandboxState.assessment === 'project') {
+                scoreMatrix.prog += 60;
+                scoreMatrix.recon += 25;
+                scoreMatrix.ess += 10;
+                scoreMatrix.per += 5;
+            } else { // action
+                scoreMatrix.recon += 65;
+                scoreMatrix.prog += 25;
+                scoreMatrix.per += 5;
+                scoreMatrix.ess += 5;
+            }
+
+            // Normalize values to clean percentages
+            const total = scoreMatrix.per + scoreMatrix.ess + scoreMatrix.prog + scoreMatrix.recon;
+            const finalPer = Math.round((scoreMatrix.per / total) * 100);
+            const finalEss = Math.round((scoreMatrix.ess / total) * 100);
+            const finalProg = Math.round((scoreMatrix.prog / total) * 100);
+            const finalRecon = Math.round((scoreMatrix.recon / total) * 100);
+
+            // Update UI Bars
+            document.getElementById('sb-per-bar').style.width = finalPer + "%";
+            document.getElementById('sb-per-val').innerText = finalPer + "%";
+
+            document.getElementById('sb-ess-bar').style.width = finalEss + "%";
+            document.getElementById('sb-ess-val').innerText = finalEss + "%";
+
+            document.getElementById('sb-prog-bar').style.width = finalProg + "%";
+            document.getElementById('sb-prog-val').innerText = finalProg + "%";
+
+            document.getElementById('sb-recon-bar').style.width = finalRecon + "%";
+            document.getElementById('sb-recon-val').innerText = finalRecon + "%";
+        }
+
+        // Guided statement builder logic
+        function generateStatement() {
+            const purpose = document.getElementById('stmt-purpose').value;
+            const learning = document.getElementById('stmt-learning').value;
+            const environment = document.getElementById('stmt-environment').value;
+            
+            const preview = document.getElementById('stmt-preview-text');
+
+            if (!purpose && !learning && !environment) {
+                preview.innerHTML = "As you select options from the menus on the left, your professional philosophy statement will write itself right here! Let's build your voice as a future educator...";
+                return;
+            }
+
+            let text = "I believe that the core goal of education is to ";
+            text += purpose ? `<strong class="text-slate-900 underline decoration-eduAmber-500">${purpose}</strong>` : "[select a purpose]";
+            text += ". In my view, young students learn most deeply and meaningfully when they ";
+            text += learning ? `<strong class="text-slate-900 underline decoration-eduAmber-500">${learning}</strong>` : "[select a method]";
+            text += ". Consequently, my ultimate priority is to organize and structure my classroom as ";
+            text += environment ? `<strong class="text-slate-900 underline decoration-eduAmber-500">${environment}</strong>` : "[select a layout]";
+
+            preview.innerHTML = text;
+        }
+
+        function copyStatement() {
+            const previewTextNode = document.getElementById('stmt-preview-text');
+            // Safe fallback standard text isolation
+            const plainText = previewTextNode.innerText;
+            
+            if (plainText.includes("write itself right here") || plainText.length < 50) {
+                alert("Please build a philosophy statement draft first!");
+                return;
+            }
+
+            // Create temporary input element for compatibility
+            const tempInput = document.createElement("textarea");
+            tempInput.value = plainText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            
+            // Temporary confirmation on the button itself
+            const btn = event.currentTarget;
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = `<span>✅</span> Copied Successfully!`;
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+            }, 1500);
+        }
+
+        function resetStatement() {
+            document.getElementById('stmt-purpose').value = "";
+            document.getElementById('stmt-learning').value = "";
+            document.getElementById('stmt-environment').value = "";
+            generateStatement();
+        }
+
+        // Initialize App on Window Load
+        window.onload = function() {
+            // Set initial state values
+            loadQuestion();
+            switchTab('perennialism');
+            setSandboxOption('seating', 'rows');
+            setSandboxOption('curriculum', 'greatbooks');
+            setSandboxOption('assessment', 'standard');
+        }
+    </script>
+</body>
+</html>
