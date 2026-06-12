@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educator Prep: AI Lesson Prompt Generator</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --border-color: #cbd5e1;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            padding: 2rem 1rem;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 1rem;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            margin: 0 0 0.5rem 0;
+        }
+
+        header p {
+            color: #64748b;
+            font-style: italic;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .full-width {
+                grid-column: span 2;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 1rem;
+            font-family: inherit;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input {
+            margin: 0;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .output-area {
+            margin-top: 2rem;
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .output-area h3 {
+            color: #f8fafc;
+            margin-top: 0;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: auto;
+            background: #334155;
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .copy-btn:hover {
+            background: #475569;
+        }
+
+        .info-note {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--secondary-color);
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>EduPrep AI Prompt Generator</h1>
+        <p>Designed for Pre-Service and In-Service Educators to Build Robust, AI-Resistant, ADA-Compliant Lesson Plans.</p>
+    </header>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Lesson Basics</h3>
+            
+            <label for="lessonTitle">Lesson Title</label>
+            <input type="text" id="lessonTitle" placeholder="e.g., Introduction to Photosynthesis">
+
+            <label for="lessonSubject">Subject / Discipline</label>
+            <input type="text" id="lessonSubject" placeholder="e.g., 7th Grade Life Science">
+
+            <label for="audience">Target Audience / Grade Level</label>
+            <input type="text" id="audience" placeholder="e.g., Middle School, Undergraduate, Adult Learners">
+
+            <label for="objectives">Learning Objectives (SWBAT...)</label>
+            <textarea id="objectives" placeholder="e.g., Explain light-dependent reactions; Identify the outputs of cellular respiration."></textarea>
+
+            <label for="keyTerms">Key Vocabulary & Concepts</label>
+            <input type="text" id="keyTerms" placeholder="e.g., Chloroplast, Thylakoid, ATP, Stroma">
+        </div>
+
+        <div class="card">
+            <h3>Pedagogical Strategy & Inclusion</h3>
+            
+            <label>Types of Activities to Include</label>
+            <div class="checkbox-group">
+                <div class="checkbox-item"><input type="checkbox" id="actInteractive" value="Interactive Formative Checks" checked><label for="actInteractive">Interactive Checks</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="actTeam" value="Collaborative Team Projects"><label for="actTeam">Team Projects</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="actCase" value="Real-world Case Studies"><label for="actCase">Case Studies</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="actLabs" value="Hands-on/Virtual Labs"><label for="actLabs">Labs</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="actResearch" value="Guided Research Activities"><label for="actResearch">Research</label></div>
+                <div class="checkbox-item"><input type="checkbox" id="actAssess" value="Summative Assessments" checked><label for="actAssess">Assessments</label></div>
+            </div>
+
+            <label for="customActivity">Other Activity Type (Optional)</label>
+            <input type="text" id="customActivity" placeholder="e.g., Socratic Seminar, Jigsaw puzzle">
+
+            <label for="adaCompliance">ADA & Universal Design for Learning (UDL)</label>
+            <select id="adaCompliance">
+                <option value="Provide text alternatives for visuals, scaffolded reading materials, and closed-caption options for media.">Standard UDL (Visual, Auditory, Textual Multi-modalities)</option>
+                <option value="Focus heavily on screen-reader compatibility, high contrast text, and alt text for all diagrams.">Focus: Vision Impairment / Screen Readers</option>
+                <option value="Focus on chunked text, highly predictable layouts, clear definitions, and low-cognitive-load formatting.">Focus: Neurodivergent Learners (ADHD/Dyslexia)</option>
+                <option value="Incorporate tactile models, physical kinesthetic learning options, and verbal translation guides.">Focus: Kinesthetic & ELL Accommodations</option>
+            </select>
+
+            <div class="info-note">
+                <strong>Professor's Tip:</strong> Analogies and real-world anchors make abstract concepts concrete for diverse learner backgrounds.
+            </div>
+            
+            <div class="checkbox-item" style="margin-bottom: 1rem;">
+                <input type="checkbox" id="includeAnalogies" checked>
+                <label for="includeAnalogies">Generate analogies & real-world anchors</label>
+            </div>
+        </div>
+
+        <div class="card full-width">
+            <h3>AI Misuse Mitigation (Academic Integrity)</h3>
+            <p style="font-size: 0.9rem; margin-top: -0.5rem; color: #64748b;">
+                AI cannot easily replicate localized contexts, personal reflections, real-time iterations, or multi-step, dynamic problem solving. Select strategies to shield your assignments from basic copy-paste AI cheating.
+            </p>
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="aiLocal" value="Require students to tie their analysis to a highly localized current event or community issue." checked>
+                    <label for="aiLocal">Localized/Community Context</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="aiProcess" value="Implement a multi-stage process check (e.g., submit a mind map first, then a draft peer review, then a reflection on changes made)." checked>
+                    <label for="aiProcess">Process over Product (Multi-stage)</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="aiViva" value="Include an oral defense component, a brief flip video explanation, or a synchronous, unpredictable variable change." >
+                    <label for="aiViva">Viva Voce / Video Explanation</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="aiCritique" value="Provide an intentionally flawed, AI-generated essay/data set within the assignment and grade students on their ability to critique, correct, and cite facts against it.">
+                    <label for="aiCritique">Critique the AI (Critique/Edit)</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="full-width">
+            <button onclick="generatePrompt()">Generate AI Prompt</button>
+        </div>
+    </div>
+
+    <div class="output-area" id="outputContainer" style="display: none;">
+        <button class="copy-btn" onclick="copyToClipboard()">Copy Prompt</button>
+        <h3>Your Master Prompt</h3>
+        <pre id="promptOutput"></pre>
+    </div>
+</div>
+
+<script>
+    function generatePrompt() {
+        // Collect field data
+        const title = document.getElementById('lessonTitle').value || "[Insert Lesson Title]";
+        const subject = document.getElementById('lessonSubject').value || "[Insert Subject]";
+        const audience = document.getElementById('audience').value || "[Insert Target Audience]";
+        const objectives = document.getElementById('objectives').value || "[Insert Learning Objectives]";
+        const keyTerms = document.getElementById('keyTerms').value || "[Insert Key Terms]";
+        
+        // Collect Activities
+        let activities = [];
+        const activityIds = ['actInteractive', 'actTeam', 'actCase', 'actLabs', 'actResearch', 'actAssess'];
+        activityIds.forEach(id => {
+            const cb = document.getElementById(id);
+            if (cb.checked) activities.push(cb.value);
+        });
+        const customAct = document.getElementById('customActivity').value;
+        if (customAct) activities.push(customAct);
+        
+        // ADA Strategy
+        const ada = document.getElementById('adaCompliance').value;
+        
+        // Analogies
+        const includeAnalogies = document.getElementById('includeAnalogies').checked 
+            ? "Provide at least two vivid analogies and real-world anchors that connect these concepts to everyday experiences common to this demographic." 
+            : "";
+
+        // AI Mitigations
+        let mitigations = [];
+        const aiIds = ['aiLocal', 'aiProcess', 'aiViva', 'aiCritique'];
+        aiIds.forEach(id => {
+            const cb = document.getElementById(id);
+            if (cb.checked) mitigations.push(cb.value);
+        });
+
+        // Assemble the prompt using professional education jargon
+        let masterPrompt = `Act as an expert curriculum designer and instructional strategist specializing in educator preparation programs. Please construct a comprehensive, structured lesson plan guide based on the following specifications:
+
+### LESSON OVERVIEW
+- **Lesson Title:** ${title}
+- **Subject/Discipline:** ${subject}
+- **Target Audience:** ${audience}
+- **Learning Objectives (SWBAT):** ${objectives}
+- **Key Terms/Vocabulary:** ${keyTerms}
+
+### STRUCTURAL REQUIREMENTS
+Please generate the following structured components for this lesson:
+1. **Anticipatory Set & Direct Instruction Framework:** How to introduce the topic dynamically.
+2. **Activity Formats:** Build detailed layouts for the following requested student engagement models:
+${activities.map(act => `   - ${act}`).join('\n')}
+
+3. **ADA Compliance & Universal Design for Learning (UDL):** Integrate strategies to ensure accessibility, specifically: "${ada}"
+   
+${includeAnalogies ? `4. **Analogies & Real-World Anchors:**\n   ${includeAnalogies}\n` : ''}
+### ANTI-AI PLAGIARISM & AUTHENTIC ASSESSMENT DESIGN
+To ensure student work represents genuine cognitive processing and shields assessments from standard AI generation (like copy-pasting into LLMs), weave the following constraints and design elements directly into the activities and assessments:
+${mitigations.map(mit => ` - ${mit}`).join('\n')}
+
+### OUTPUT FORMAT
+Provide the lesson plan with clear, professional headers, scaffolded instructional steps, ready-to-print student instructions for the activities, and an evaluation rubric (or checklist) tailored for the authentic, AI-resistant assessment components.`;
+
+        // Output to text area
+        document.getElementById('promptOutput').textContent = masterPrompt;
+        document.getElementById('outputContainer').style.display = 'block';
+        
+        // Scroll smoothly to output
+        document.getElementById('outputContainer').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function copyToClipboard() {
+        const text = document.getElementById('promptOutput').textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Prompt copied to clipboard! You can now paste this into ChatGPT, Claude, Gemini, etc.');
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
+    }
+</script>
+
+</body>
+</html>
