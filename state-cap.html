@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US State Capitols Exam Hub - Grade 5</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- jsPDF CDN for client-side PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            fredoka: ['Fredoka', 'sans-serif'],
+            quicksand: ['Quicksand', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f0f7ff;
+    }
+    h1, h2, h3 {
+      font-family: 'Fredoka', sans-serif;
+    }
+    
+    /* Print Styles */
+    @media print {
+      body {
+        background-color: white !important;
+        color: black !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-page {
+        display: block !important;
+        page-break-after: always;
+      }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-blue-200">
+
+  <!-- Header Banner -->
+  <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-red-500 text-white shadow-lg no-print">
+    <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <!-- Cute Custom USA SVG Icon -->
+        <svg class="w-12 h-12 text-yellow-300 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+        </svg>
+        <div>
+          <h1 class="text-3xl font-bold tracking-wide">US State Capitols Exam Hub</h1>
+          <p class="text-blue-100 text-sm">Designed for 5th Grade Social Studies explorers! 🗺️🎒</p>
+        </div>
+      </div>
+      
+      <!-- Interactive Navigation / Quick Actions -->
+      <div class="flex flex-wrap gap-2">
+        <button onclick="switchTab('student')" id="btn-tab-student" class="px-5 py-2.5 rounded-full bg-white text-indigo-700 font-bold shadow-md hover:bg-indigo-50 transition duration-300 flex items-center gap-1.5 text-sm">
+          <span>✍️</span> Student Interactive Practice
+        </button>
+        <button onclick="switchTab('teacher')" id="btn-tab-teacher" class="px-5 py-2.5 rounded-full bg-indigo-800 bg-opacity-40 text-white font-bold hover:bg-opacity-60 transition duration-300 flex items-center gap-1.5 text-sm">
+          <span>👨‍🏫</span> Teacher Download & Resource Hub
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-grow max-w-6xl w-full mx-auto p-4 md:p-6">
+
+    <!-- STUDENT TAB -->
+    <section id="tab-student" class="space-y-6">
+      
+      <!-- Educational Welcome Card -->
+      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-md border-4 border-blue-100 relative overflow-hidden">
+        <div class="absolute right-0 top-0 opacity-10 pointer-events-none transform translate-x-10 -translate-y-10">
+          <svg class="w-64 h-64 text-blue-900" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <div class="max-w-3xl">
+          <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Lesson Focus: Geography</span>
+          <h2 class="text-3xl font-bold text-slate-800 mt-2 mb-3">Welcome, Future Historian! 🌟</h2>
+          <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+            Every US state has a special city where the leaders meet to make laws and guide the state. That city is called the <strong>capitol</strong>. Can you help us identify these important capitols? 
+          </p>
+          <div class="mt-4 flex flex-wrap gap-4 text-xs font-semibold text-slate-500">
+            <span class="flex items-center gap-1 bg-slate-100 px-3 py-1.5 rounded-lg">⭐ 5 Multiple Choice</span>
+            <span class="flex items-center gap-1 bg-slate-100 px-3 py-1.5 rounded-lg">🤝 3 Tap-to-Match</span>
+            <span class="flex items-center gap-1 bg-slate-100 px-3 py-1.5 rounded-lg">✍️ 1 Fill-in-the-Blank</span>
+            <span class="flex items-center gap-1 bg-slate-100 px-3 py-1.5 rounded-lg">💡 1 Creative Essay</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exam Workspace -->
+      <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+        
+        <!-- Interactive Progress bar -->
+        <div class="bg-slate-100 h-2.5 w-full">
+          <div id="quiz-progress" class="bg-gradient-to-r from-blue-500 to-indigo-600 h-2.5 rounded-r-full transition-all duration-500" style="width: 10%;"></div>
+        </div>
+
+        <div class="p-6 md:p-8 space-y-10" id="interactive-quiz-container">
+          <!-- 1. MULTIPLE CHOICE SECTION -->
+          <div>
+            <div class="flex items-center gap-2 border-b-2 border-blue-500 pb-2 mb-6">
+              <span class="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">A</span>
+              <h3 class="text-xl font-bold text-slate-800">Multiple Choice Questions (1-5)</h3>
+            </div>
+
+            <!-- MCQs Container -->
+            <div class="space-y-8">
+              <!-- Q1 -->
+              <div class="question-block" data-q="1">
+                <p class="text-lg font-semibold text-slate-800 mb-3">
+                  <span class="text-blue-600 font-bold">Question 1.</span> New York is known for its towering skyscrapers, but what city is the actual state capitol?
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <button onclick="selectMCQ(1, 'A', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">A</span> New York City
+                  </button>
+                  <button onclick="selectMCQ(1, 'B', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">B</span> Albany
+                  </button>
+                  <button onclick="selectMCQ(1, 'C', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">C</span> Buffalo
+                  </button>
+                  <button onclick="selectMCQ(1, 'D', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">D</span> Syracuse
+                  </button>
+                </div>
+                <div class="explanation mt-3 hidden p-4 rounded-xl bg-blue-50 text-slate-700 border border-blue-200 text-sm"></div>
+              </div>
+
+              <!-- Q2 -->
+              <div class="question-block" data-q="2">
+                <p class="text-lg font-semibold text-slate-800 mb-3">
+                  <span class="text-blue-600 font-bold">Question 2.</span> If you went on a trip to the capitol of California, which historic city would you visit?
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <button onclick="selectMCQ(2, 'A', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">A</span> Los Angeles
+                  </button>
+                  <button onclick="selectMCQ(2, 'B', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">B</span> San Francisco
+                  </button>
+                  <button onclick="selectMCQ(2, 'C', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">C</span> San Diego
+                  </button>
+                  <button onclick="selectMCQ(2, 'D', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">D</span> Sacramento
+                  </button>
+                </div>
+                <div class="explanation mt-3 hidden p-4 rounded-xl bg-blue-50 text-slate-700 border border-blue-200 text-sm"></div>
+              </div>
+
+              <!-- Q3 -->
+              <div class="question-block" data-q="3">
+                <p class="text-lg font-semibold text-slate-800 mb-3">
+                  <span class="text-blue-600 font-bold">Question 3.</span> In Texas, the state capitol building looks a lot like the US Capitol building in Washington, D.C., but it is built out of beautiful pink granite! What is the capitol of Texas?
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <button onclick="selectMCQ(3, 'A', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">A</span> Houston
+                  </button>
+                  <button onclick="selectMCQ(3, 'B', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">B</span> Dallas
+                  </button>
+                  <button onclick="selectMCQ(3, 'C', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">C</span> Austin
+                  </button>
+                  <button onclick="selectMCQ(3, 'D', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">D</span> San Antonio
+                  </button>
+                </div>
+                <div class="explanation mt-3 hidden p-4 rounded-xl bg-blue-50 text-slate-700 border border-blue-200 text-sm"></div>
+              </div>
+
+              <!-- Q4 -->
+              <div class="question-block" data-q="4">
+                <p class="text-lg font-semibold text-slate-800 mb-3">
+                  <span class="text-blue-600 font-bold">Question 4.</span> Florida is the Sunshine State, but what is its sunny state capitol?
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <button onclick="selectMCQ(4, 'A', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">A</span> Miami
+                  </button>
+                  <button onclick="selectMCQ(4, 'B', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">B</span> Orlando
+                  </button>
+                  <button onclick="selectMCQ(4, 'C', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">C</span> Tallahassee
+                  </button>
+                  <button onclick="selectMCQ(4, 'D', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">D</span> Tampa
+                  </button>
+                </div>
+                <div class="explanation mt-3 hidden p-4 rounded-xl bg-blue-50 text-slate-700 border border-blue-200 text-sm"></div>
+              </div>
+
+              <!-- Q5 -->
+              <div class="question-block" data-q="5">
+                <p class="text-lg font-semibold text-slate-800 mb-3">
+                  <span class="text-blue-600 font-bold">Question 5.</span> Abraham Lincoln once lived and worked in this capitol city of Illinois. Which city is it?
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <button onclick="selectMCQ(5, 'A', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">A</span> Chicago
+                  </button>
+                  <button onclick="selectMCQ(5, 'B', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">B</span> Springfield
+                  </button>
+                  <button onclick="selectMCQ(5, 'C', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">C</span> Peoria
+                  </button>
+                  <button onclick="selectMCQ(5, 'D', this)" class="mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-600 shrink-0">D</span> Rockford
+                  </button>
+                </div>
+                <div class="explanation mt-3 hidden p-4 rounded-xl bg-blue-50 text-slate-700 border border-blue-200 text-sm"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. MATCHING SECTION -->
+          <div>
+            <div class="flex items-center gap-2 border-b-2 border-red-500 pb-2 mb-6">
+              <span class="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">B</span>
+              <h3 class="text-xl font-bold text-slate-800">Tap-to-Match Challenge (Questions 6-8)</h3>
+            </div>
+            
+            <p class="text-slate-600 mb-6 text-sm">
+              💡 <strong>How to play:</strong> Tap a State on the left, then tap its matching Capitol city on the right! 
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <!-- States -->
+              <div class="space-y-3">
+                <h4 class="font-bold text-slate-700 uppercase tracking-wider text-xs">US States</h4>
+                <div id="state-wash" onclick="matchSelection('state', 'Washington', this)" class="p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-red-400 transition font-semibold text-slate-800 flex justify-between items-center">
+                  <span>🌲 Washington State</span>
+                  <span class="match-indicator text-xs text-slate-400 bg-white border px-2 py-0.5 rounded-md">Tap to connect</span>
+                </div>
+                <div id="state-mich" onclick="matchSelection('state', 'Michigan', this)" class="p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-red-400 transition font-semibold text-slate-800 flex justify-between items-center">
+                  <span>✋ Michigan</span>
+                  <span class="match-indicator text-xs text-slate-400 bg-white border px-2 py-0.5 rounded-md">Tap to connect</span>
+                </div>
+                <div id="state-geor" onclick="matchSelection('state', 'Georgia', this)" class="p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-red-400 transition font-semibold text-slate-800 flex justify-between items-center">
+                  <span>🍑 Georgia</span>
+                  <span class="match-indicator text-xs text-slate-400 bg-white border px-2 py-0.5 rounded-md">Tap to connect</span>
+                </div>
+              </div>
+
+              <!-- Capitols -->
+              <div class="space-y-3">
+                <h4 class="font-bold text-slate-700 uppercase tracking-wider text-xs">Capitol Cities</h4>
+                <div id="cap-lansing" onclick="matchSelection('capitol', 'Lansing', this)" class="p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-blue-400 transition font-semibold text-slate-800 flex justify-between items-center">
+                  <span>🏛️ Lansing</span>
+                  <span class="match-indicator text-xs text-slate-400 bg-white border px-2 py-0.5 rounded-md">Tap to connect</span>
+                </div>
+                <div id="cap-atlanta" onclick="matchSelection('capitol', 'Atlanta', this)" class="p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-blue-400 transition font-semibold text-slate-800 flex justify-between items-center">
+                  <span>🏛️ Atlanta</span>
+                  <span class="match-indicator text-xs text-slate-400 bg-white border px-2 py-0.5 rounded-md">Tap to connect</span>
+                </div>
+                <div id="cap-olympia" onclick="matchSelection('capitol', 'Olympia', this)" class="p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-blue-400 transition font-semibold text-slate-800 flex justify-between items-center">
+                  <span>🏛️ Olympia</span>
+                  <span class="match-indicator text-xs text-slate-400 bg-white border px-2 py-0.5 rounded-md">Tap to connect</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Matches Status Display -->
+            <div id="matching-status" class="mt-6 text-center text-slate-500 font-semibold text-sm"></div>
+            <div id="matching-feedback" class="mt-4 hidden p-4 rounded-xl bg-red-50 text-slate-700 border border-red-200 text-sm max-w-4xl mx-auto"></div>
+          </div>
+
+          <!-- 3. FILL IN THE BLANK -->
+          <div>
+            <div class="flex items-center gap-2 border-b-2 border-yellow-500 pb-2 mb-6">
+              <span class="bg-yellow-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">C</span>
+              <h3 class="text-xl font-bold text-slate-800">Fill in the Blank (Question 9)</h3>
+            </div>
+
+            <div class="question-block" data-q="9">
+              <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 space-y-4">
+                <p class="text-lg font-semibold text-slate-800 leading-relaxed">
+                  The tropical island state of Hawaii is famous for its gorgeous beaches, volcanoes, and historic landmarks. The state capitol of Hawaii is 
+                  <input type="text" id="fib-q9" placeholder="Type answer here..." class="mx-2 px-4 py-2 border-2 border-slate-300 rounded-xl focus:border-yellow-400 focus:outline-none w-56 text-center font-bold text-slate-800">.
+                </p>
+                <p class="text-slate-400 text-xs italic">Spelling counts! Hint: It starts with the letter 'H'.</p>
+              </div>
+              <div class="explanation mt-3 hidden p-4 rounded-xl bg-yellow-50 text-slate-700 border border-yellow-200 text-sm"></div>
+            </div>
+          </div>
+
+          <!-- 4. SHORT ESSAY -->
+          <div>
+            <div class="flex items-center gap-2 border-b-2 border-green-500 pb-2 mb-6">
+              <span class="bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">D</span>
+              <h3 class="text-xl font-bold text-slate-800">Short Essay Thinker (Question 10)</h3>
+            </div>
+
+            <div class="question-block" data-q="10">
+              <div class="space-y-4">
+                <p class="text-lg font-semibold text-slate-800 leading-relaxed">
+                  <strong>Question 10.</strong> Many people assume that a state's capitol is always its biggest or most famous city (like New York City or Chicago). However, this is usually not the case!
+                </p>
+                <div class="p-5 bg-green-50 border-l-4 border-green-500 rounded-r-2xl">
+                  <p class="text-slate-700 font-medium">
+                    Explain in 2-3 full sentences why states might choose a smaller, more centrally located city to be their capitol instead of their biggest city. Give at least one example to support your ideas!
+                  </p>
+                </div>
+                
+                <textarea id="essay-q10" rows="5" placeholder="Write your ideas here..." class="w-full p-4 border-2 border-slate-300 rounded-2xl focus:border-green-400 focus:outline-none text-slate-700 leading-relaxed font-medium"></textarea>
+              </div>
+              <div class="explanation mt-4 hidden p-5 rounded-2xl bg-green-50 text-slate-800 border border-green-200 text-sm space-y-3"></div>
+            </div>
+          </div>
+
+          <!-- Actions Footer -->
+          <div class="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div id="interactive-status-text" class="text-slate-500 font-semibold">Ready to finish? Click to find out your score!</div>
+            <div class="flex gap-2 w-full sm:w-auto">
+              <button onclick="resetInteractiveQuiz()" class="px-6 py-3 rounded-xl border-2 border-slate-200 text-slate-600 font-bold hover:bg-slate-50 transition w-full sm:w-auto">
+                Reset Quiz
+              </button>
+              <button onclick="gradeQuiz()" id="submit-quiz-btn" class="px-8 py-3 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 shadow-md transition w-full sm:w-auto">
+                Submit & Score!
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TEACHER DOWNLOADS TAB -->
+    <section id="tab-teacher" class="space-y-6 hidden">
+      <!-- Intro Resource Card -->
+      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-md border-4 border-indigo-100 relative overflow-hidden">
+        <h2 class="text-3xl font-bold text-slate-800 mb-3">Teacher Resource Dashboard</h2>
+        <p class="text-slate-600 leading-relaxed max-w-4xl text-base">
+          Welcome educators! Use this dashboard to instantly generate offline study sheets, graded assessment keys, and digital imports for your Learning Management System (LMS). All materials are fully aligned to fifth-grade US Geography curricula.
+        </p>
+      </div>
+
+      <!-- Quick Action Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Student Blank Exam PDF -->
+        <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-100 flex flex-col justify-between hover:shadow-lg transition">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl font-bold mb-4">📄</div>
+            <h3 class="text-xl font-bold text-slate-800 mb-2">Student PDF Exam</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-4">
+              Download a cleanly-formatted, high-resolution classroom test paper ready for printing and physical distribution. Fully blank for standard student testing.
+            </p>
+          </div>
+          <button onclick="generatePDF(false)" class="w-full py-3 px-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition flex items-center justify-center gap-2">
+            <span>📥</span> Download Student Exam
+          </button>
+        </div>
+
+        <!-- Teacher Graded Answer Key PDF -->
+        <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-100 flex flex-col justify-between hover:shadow-lg transition">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold mb-4">🔑</div>
+            <h3 class="text-xl font-bold text-slate-800 mb-2">Teacher Answer Key</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-4">
+              Get the complete exam version containing pre-marked correct answers, fully written educational rationales, and professional grading rubrics.
+            </p>
+          </div>
+          <button onclick="generatePDF(true)" class="w-full py-3 px-4 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition flex items-center justify-center gap-2">
+            <span>📥</span> Download Answer Key
+          </button>
+        </div>
+
+        <!-- Brightspace QTI XML Download -->
+        <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-100 flex flex-col justify-between hover:shadow-lg transition">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl font-bold mb-4">⚡</div>
+            <h3 class="text-xl font-bold text-slate-800 mb-2">LMS Integration</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-4">
+              Generate and download a standard, highly-compatible QTI XML package for instant automated importing into Brightspace (D2L), Canvas, or Moodle platforms.
+            </p>
+          </div>
+          <button onclick="downloadQTI()" class="w-full py-3 px-4 bg-amber-500 text-white font-bold rounded-xl hover:bg-amber-600 transition flex items-center justify-center gap-2">
+            <span>💾</span> Download Brightspace QTI
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Live Preview Container of Exam Layout -->
+      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-md border border-slate-100 space-y-6">
+        <div class="flex items-center justify-between border-b pb-4">
+          <h3 class="text-xl font-bold text-slate-800">Interactive Exam Preview Panel</h3>
+          <span class="text-xs bg-slate-100 text-slate-600 font-bold px-3 py-1 rounded-full uppercase">Real-Time Data</span>
+        </div>
+        
+        <div class="bg-slate-50 rounded-2xl p-6 max-h-96 overflow-y-auto space-y-6 border border-slate-200" id="preview-exam-list">
+          <!-- Dynamically filled with full questions preview -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="bg-slate-800 text-slate-400 py-8 border-t border-slate-700 text-center mt-12 no-print">
+    <div class="max-w-6xl mx-auto px-4 space-y-2">
+      <p class="text-sm">Developed as an interactive academic study assistant for Grade 5 Social Studies programs.</p>
+      <p class="text-xs">Supports universal web accessibility standards, clean dynamic PDF export, and standard IMS QTI specifications.</p>
+    </div>
+  </footer>
+
+  <!-- Application Engine Script -->
+  <script>
+    // Complete structured array containing questions data, option schemas, correct options, rationales, hints
+    const EXAM_DATA = [
+      {
+        num: 1,
+        type: 'mcq',
+        question: "New York is known for its towering skyscrapers, but what city is the actual state capitol?",
+        options: {
+          A: "New York City",
+          B: "Albany",
+          C: "Buffalo",
+          D: "Syracuse"
+        },
+        correct: 'B',
+        hint: "It is located along the scenic Hudson River, much further north than NYC!",
+        explanation: "Albany was officially selected as the capital city of New York in 1797 due to its strategic central trade position along the Hudson River, steering development away from coastal metropolitan cities."
+      },
+      {
+        num: 2,
+        type: 'mcq',
+        question: "If you went on a trip to the capitol of California, which historic city would you visit?",
+        options: {
+          A: "Los Angeles",
+          B: "San Francisco",
+          C: "San Diego",
+          D: "Sacramento"
+        },
+        correct: 'D',
+        hint: "This city originally grew super fast during the legendary Gold Rush of 1849!",
+        explanation: "Sacramento was chosen as California's capitol in 1854 because it was a safer inland port city, keeping governmental operations secure from coastal storms or naval attacks."
+      },
+      {
+        num: 3,
+        type: 'mcq',
+        question: "In Texas, the state capitol building looks a lot like the US Capitol building in Washington, D.C., but it is built out of beautiful pink granite! What is the capitol of Texas?",
+        options: {
+          A: "Houston",
+          B: "Dallas",
+          C: "Austin",
+          D: "San Antonio"
+        },
+        correct: 'C',
+        hint: "This city is famous for its live music concerts and is named after Stephen F. Austin!",
+        explanation: "Austin became the capital of Texas in 1839. It was handpicked because of its beautiful, rich hills, plentiful clean drinking water, and centralized geography within the vast state territory."
+      },
+      {
+        num: 4,
+        type: 'mcq',
+        question: "Florida is the Sunshine State, but what is its sunny state capitol?",
+        options: {
+          A: "Miami",
+          B: "Orlando",
+          C: "Tallahassee",
+          D: "Tampa"
+        },
+        correct: 'C',
+        hint: "It lies in the northern, hilly part of Florida, nestled between Pensacola and Jacksonville.",
+        explanation: "Tallahassee was selected as the capitol in 1824 because it lay directly halfway between Florida's two largest historical cities at the time (Pensacola and St. Augustine)."
+      },
+      {
+        num: 5,
+        type: 'mcq',
+        question: "Abraham Lincoln once lived and worked in this capitol city of Illinois. Which city is it?",
+        options: {
+          A: "Chicago",
+          B: "Springfield",
+          C: "Peoria",
+          D: "Rockford"
+        },
+        correct: 'B',
+        hint: "This city has a beautiful domed capitol building and is deep in the central plains of Illinois.",
+        explanation: "Springfield was chosen as Illinois' third state capital in 1837. Abraham Lincoln himself played a massive legislative role in helping move the capital to this centrally located, prosperous city."
+      },
+      {
+        num: 6,
+        type: 'match',
+        question: "Match the state of Washington to its correct capitol city.",
+        state: "Washington",
+        capitol: "Olympia",
+        hint: "Named after the spectacular Olympic Mountains that rise on the horizon!",
+        explanation: "Olympia is the capitol of Washington State. It is situated right at the southern tip of the stunning Puget Sound."
+      },
+      {
+        num: 7,
+        type: 'match',
+        question: "Match the state of Michigan to its correct capitol city.",
+        state: "Michigan",
+        capitol: "Lansing",
+        hint: "Located right in the center of the Lower Peninsula's 'mitten' shape!",
+        explanation: "Lansing is Michigan's capital city. Moving the capital from Detroit to Lansing in 1847 helped safeguard government operations from the Canadian border."
+      },
+      {
+        num: 8,
+        type: 'match',
+        question: "Match the state of Georgia to its correct capitol city.",
+        state: "Georgia",
+        capitol: "Atlanta",
+        hint: "This city played a massive role in the Civil Rights Movement and has a huge airport!",
+        explanation: "Atlanta is the capitol of Georgia. It is the largest city in the state, serving as a primary cultural, educational, and transportation hub."
+      },
+      {
+        num: 9,
+        type: 'fib',
+        question: "The tropical island state of Hawaii is famous for its gorgeous beaches, volcanoes, and historic landmarks. The state capitol of Hawaii is ______.",
+        correct: "Honolulu",
+        hint: "This city houses the historical Iolani Palace, the only royal palace on US soil!",
+        explanation: "Honolulu is the capital of Hawaii. Located on the island of Oahu, it has been the economic, cultural, and political capital since the days of King Kamehameha III in 1845."
+      },
+      {
+        num: 10,
+        type: 'essay',
+        question: "Explain in 2-3 full sentences why states might choose a smaller, more centrally located city to be their capitol instead of their biggest city. Give at least one example to support your ideas!",
+        rubric: "An ideal response should identify that: 1) Central geographic placement makes the capital easily accessible to all citizens across the entire state. 2) Selecting a smaller city prevents one single massive city (like New York City or Chicago) from dominating all political power. 3) Historically, inland locations protected government centers from naval bombardment or coastal weather threats.",
+        sampleAnswer: "Many states select smaller, central cities to ensure the government is easily accessible to everyone living across the state. For example, Illinois chose Springfield instead of Chicago to balance power and keep the capital centrally located. This also helped protect historical state records from coastal storms or international border conflicts."
+      }
+    ];
+
+    // Tracker for Interactive Quiz
+    let selectedAnswers = {
+      1: null,
+      2: null,
+      3: null,
+      4: null,
+      5: null,
+      9: "",
+      10: ""
+    };
+
+    let matchingSelections = {
+      state: null,
+      capitol: null
+    };
+
+    let matchesCompleted = {}; // mapping state name -> capitol name
+
+    // Start-up Initializers
+    window.onload = function() {
+      renderPreviewExam();
+      updateProgress();
+    };
+
+    // Tab switcher between Student Interactive and Teacher Resource Desk
+    function switchTab(tab) {
+      const studentTab = document.getElementById('tab-student');
+      const teacherTab = document.getElementById('tab-teacher');
+      const btnStudent = document.getElementById('btn-tab-student');
+      const btnTeacher = document.getElementById('btn-tab-teacher');
+
+      if (tab === 'student') {
+        studentTab.classList.remove('hidden');
+        teacherTab.classList.add('hidden');
+        btnStudent.classList.add('bg-white', 'text-indigo-700', 'shadow-md');
+        btnStudent.classList.remove('bg-indigo-800', 'bg-opacity-40', 'text-white');
+        btnTeacher.classList.remove('bg-white', 'text-indigo-700', 'shadow-md');
+        btnTeacher.classList.add('bg-indigo-800', 'bg-opacity-40', 'text-white');
+      } else {
+        studentTab.classList.add('hidden');
+        teacherTab.classList.remove('hidden');
+        btnTeacher.classList.add('bg-white', 'text-indigo-700', 'shadow-md');
+        btnTeacher.classList.remove('bg-indigo-800', 'bg-opacity-40', 'text-white');
+        btnStudent.classList.remove('bg-white', 'text-indigo-700', 'shadow-md');
+        btnStudent.classList.add('bg-indigo-800', 'bg-opacity-40', 'text-white');
+      }
+    }
+
+    // Interactive MCQ selection handler
+    function selectMCQ(qNum, optionKey, buttonEl) {
+      // De-select all other options in this question
+      const parentBlock = buttonEl.closest('.question-block');
+      const buttons = parentBlock.querySelectorAll('.mcq-opt');
+      buttons.forEach(btn => {
+        btn.classList.remove('border-blue-500', 'bg-blue-50');
+        btn.classList.add('border-slate-200');
+      });
+
+      // Highlight selected
+      buttonEl.classList.remove('border-slate-200');
+      buttonEl.classList.add('border-blue-500', 'bg-blue-50');
+      
+      selectedAnswers[qNum] = optionKey;
+      updateProgress();
+    }
+
+    // Touch-friendly Interactive Matching Selection logic
+    function matchSelection(type, val, el) {
+      // Clear previous selections for this type
+      const container = el.parentNode;
+      const cards = container.querySelectorAll('.match-indicator');
+      container.querySelectorAll('.p-4').forEach(card => {
+        card.classList.remove('border-red-500', 'border-blue-500', 'bg-red-50', 'bg-blue-50');
+      });
+
+      // Highlight selection
+      el.classList.add(type === 'state' ? 'border-red-500' : 'border-blue-500');
+      el.classList.add(type === 'state' ? 'bg-red-50' : 'bg-blue-50');
+
+      matchingSelections[type] = { value: val, element: el };
+
+      // Process match pair if both elements are tapped
+      if (matchingSelections.state && matchingSelections.capitol) {
+        const stateName = matchingSelections.state.value;
+        const capitolName = matchingSelections.capitol.value;
+
+        // Verify key
+        const checkPair = EXAM_DATA.find(q => q.type === 'match' && q.state === stateName);
+        if (checkPair && checkPair.capitol === capitolName) {
+          // Success matching
+          matchesCompleted[stateName] = capitolName;
+          
+          // Permanently lock cards
+          lockMatchedCards(matchingSelections.state.element, matchingSelections.capitol.element);
+        } else {
+          // Failed match, temporary flash error
+          flashMatchError(matchingSelections.state.element, matchingSelections.capitol.element);
+        }
+
+        // Reset buffer
+        matchingSelections.state = null;
+        matchingSelections.capitol = null;
+        updateProgress();
+      }
+    }
+
+    function lockMatchedCards(stateEl, capEl) {
+      stateEl.classList.remove('hover:border-red-400', 'cursor-pointer');
+      stateEl.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-800', 'pointer-events-none');
+      stateEl.querySelector('.match-indicator').innerText = "✅ Matched!";
+      stateEl.querySelector('.match-indicator').className = "match-indicator text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-md font-bold";
+
+      capEl.classList.remove('hover:border-blue-400', 'cursor-pointer');
+      capEl.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-800', 'pointer-events-none');
+      capEl.querySelector('.match-indicator').innerText = "✅ Matched!";
+      capEl.querySelector('.match-indicator').className = "match-indicator text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-md font-bold";
+    }
+
+    function flashMatchError(stateEl, capEl) {
+      const origStateClass = stateEl.className;
+      const origCapClass = capEl.className;
+
+      stateEl.className = "p-4 bg-red-100 border-2 border-red-500 rounded-2xl font-semibold text-red-900 flex justify-between items-center animate-bounce";
+      capEl.className = "p-4 bg-red-100 border-2 border-red-500 rounded-2xl font-semibold text-red-900 flex justify-between items-center animate-bounce";
+
+      setTimeout(() => {
+        stateEl.className = "p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-red-400 transition font-semibold text-slate-800 flex justify-between items-center";
+        capEl.className = "p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-blue-400 transition font-semibold text-slate-800 flex justify-between items-center";
+      }, 1000);
+    }
+
+    // Dynamic Quiz completion progress indicator
+    function updateProgress() {
+      let filled = 0;
+      for (let i = 1; i <= 5; i++) {
+        if (selectedAnswers[i]) filled++;
+      }
+      filled += Object.keys(matchesCompleted).length;
+      
+      const fibVal = document.getElementById('fib-q9').value.trim();
+      if (fibVal !== "") filled++;
+
+      const essayVal = document.getElementById('essay-q10').value.trim();
+      if (essayVal !== "") filled++;
+
+      const totalPercentage = (filled / 10) * 100;
+      document.getElementById('quiz-progress').style.width = `${Math.max(totalPercentage, 5)}%`;
+    }
+
+    // Reset Interactive Student quiz state
+    function resetInteractiveQuiz() {
+      selectedAnswers = { 1: null, 2: null, 3: null, 4: null, 5: null, 9: "", 10: "" };
+      matchesCompleted = {};
+      matchingSelections = { state: null, capitol: null };
+
+      // Restore MCQ Buttons
+      document.querySelectorAll('.mcq-opt').forEach(btn => {
+        btn.className = "mcq-opt w-full text-left p-4 rounded-2xl border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition font-medium text-slate-700 flex items-center gap-3";
+      });
+
+      // Restore Match Cards
+      const cardReset = (id, label) => {
+        const el = document.getElementById(id);
+        el.className = "p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-red-400 transition font-semibold text-slate-800 flex justify-between items-center";
+        el.querySelector('.match-indicator').innerText = "Tap to connect";
+        el.querySelector('.match-indicator').className = "match-indicator text-xs text-slate-400 bg-white border px-2 py-0.5 rounded-md";
+      };
+
+      cardReset('state-wash', 'Washington');
+      cardReset('state-mich', 'Michigan');
+      cardReset('state-geor', 'Georgia');
+
+      const capReset = (id, label) => {
+        const el = document.getElementById(id);
+        el.className = "p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-blue-400 transition font-semibold text-slate-800 flex justify-between items-center";
+        el.querySelector('.match-indicator').innerText = "Tap to connect";
+        el.querySelector('.match-indicator').className = "match-indicator text-xs text-slate-400 bg-white border px-2 py-0.5 rounded-md";
+      };
+
+      capReset('cap-lansing', 'Lansing');
+      capReset('cap-atlanta', 'Atlanta');
+      capReset('cap-olympia', 'Olympia');
+
+      // Restore Inputs
+      document.getElementById('fib-q9').value = "";
+      document.getElementById('essay-q10').value = "";
+
+      // Hide Feedback blocks
+      document.querySelectorAll('.explanation').forEach(el => el.classList.add('hidden'));
+      document.getElementById('matching-feedback').classList.add('hidden');
+
+      // Update Header Text
+      document.getElementById('interactive-status-text').innerHTML = "Quiz Reset! Ready to try again?";
+      updateProgress();
+    }
+
+    // Grade and score interactive exam
+    function gradeQuiz() {
+      let score = 0;
+
+      // Grade MCQs 1-5
+      for (let i = 1; i <= 5; i++) {
+        const qInfo = EXAM_DATA.find(q => q.num === i);
+        const userChoice = selectedAnswers[i];
+        const block = document.querySelector(`.question-block[data-q="${i}"]`);
+        const expBlock = block.querySelector('.explanation');
+        
+        expBlock.classList.remove('hidden');
+
+        if (userChoice === qInfo.correct) {
+          score++;
+          expBlock.innerHTML = `🌟 <strong>Great Job!</strong> You got it right! ${qInfo.explanation}`;
+          expBlock.className = "explanation mt-3 p-4 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 text-sm";
+        } else {
+          const selectedText = userChoice ? qInfo.options[userChoice] : "Unanswered";
+          expBlock.innerHTML = `❌ <strong>Almost there!</strong> Your selected choice was <strong>${selectedText}</strong>. The correct capitol is actually <strong>${qInfo.options[qInfo.correct]}</strong>. <br>💡 <em>Why?</em> ${qInfo.explanation}`;
+          expBlock.className = "explanation mt-3 p-4 rounded-xl bg-red-50 text-red-800 border border-red-200 text-sm";
+        }
+      }
+
+      // Grade Matching (6-8)
+      const matchingScore = Object.keys(matchesCompleted).length;
+      score += matchingScore;
+      const matchFeedback = document.getElementById('matching-feedback');
+      matchFeedback.classList.remove('hidden');
+      if (matchingScore === 3) {
+        matchFeedback.innerHTML = `🌟 <strong>Terrific Matching!</strong> You successfully matched all 3 State Capitols! <br> • <strong>Washington State:</strong> Olympia <br> • <strong>Michigan:</strong> Lansing <br> • <strong>Georgia:</strong> Atlanta`;
+        matchFeedback.className = "mt-4 p-4 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 text-sm max-w-4xl mx-auto";
+      } else {
+        matchFeedback.innerHTML = `👉 <strong>Completed Matching Score: ${matchingScore}/3</strong>. Make sure you complete all tap pairings to get maximum points!`;
+        matchFeedback.className = "mt-4 p-4 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 text-sm max-w-4xl mx-auto";
+      }
+
+      // Grade Fill in the Blank (9)
+      const q9Info = EXAM_DATA.find(q => q.num === 9);
+      const userFibVal = document.getElementById('fib-q9').value.trim().toLowerCase();
+      const q9Block = document.querySelector(`.question-block[data-q="9"]`);
+      const q9Exp = q9Block.querySelector('.explanation');
+      q9Exp.classList.remove('hidden');
+
+      if (userFibVal === q9Info.correct.toLowerCase()) {
+        score++;
+        q9Exp.innerHTML = `🌟 <strong>Fantastic spelling!</strong> Honolulu is exactly correct! <br>${q9Info.explanation}`;
+        q9Exp.className = "explanation mt-3 p-4 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 text-sm";
+      } else {
+        q9Exp.innerHTML = `❌ <strong>Close try!</strong> You typed: <em>"${userFibVal || 'empty'}"</em>. The correct capitol is <strong>Honolulu</strong>. <br>💡 ${q9Info.explanation}`;
+        q9Exp.className = "explanation mt-3 p-4 rounded-xl bg-red-50 text-red-800 border border-red-200 text-sm";
+      }
+
+      // Handle Essay Submission feedback (10)
+      const q10Info = EXAM_DATA.find(q => q.num === 10);
+      const userEssay = document.getElementById('essay-q10').value.trim();
+      const q10Block = document.querySelector(`.question-block[data-q="10"]`);
+      const q10Exp = q10Block.querySelector('.explanation');
+      q10Exp.classList.remove('hidden');
+
+      if (userEssay.length > 15) {
+        score++; // Give credit for comprehensive thought effort
+        q10Exp.innerHTML = `
+          <div class="space-y-2">
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">Partially Graded Effort (Passed!)</span>
+            <p>🌟 <strong>Excellent effort sharing your ideas!</strong> You earned points for submitting a thoughtful answer.</p>
+            <div class="pt-2 border-t border-emerald-200 text-xs text-slate-700">
+              <strong class="text-slate-900 block mb-1">Check against Teacher's Guide Criteria:</strong>
+              <p>${q10Info.rubric}</p>
+              <p class="mt-2 font-semibold">Teacher Sample Answer:</p>
+              <p class="italic">"${q10Info.sampleAnswer}"</p>
+            </div>
+          </div>
+        `;
+        q10Exp.className = "explanation mt-4 p-5 rounded-2xl bg-emerald-50 text-slate-800 border border-emerald-200 text-sm";
+      } else {
+        q10Exp.innerHTML = `
+          <div class="space-y-2">
+            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">Under Review</span>
+            <p>⚠️ Write a bit more to earn complete essay points! Use complete sentences to explain your ideas fully.</p>
+            <div class="pt-2 border-t border-amber-200 text-xs text-slate-600">
+              <strong class="text-slate-900 block mb-1">Teacher's Guide Criteria:</strong>
+              <p>${q10Info.rubric}</p>
+            </div>
+          </div>
+        `;
+        q10Exp.className = "explanation mt-4 p-5 rounded-2xl bg-amber-50 text-slate-800 border border-amber-200 text-sm";
+      }
+
+      // Display Final Summary Score
+      const statusText = document.getElementById('interactive-status-text');
+      statusText.innerHTML = `<span class="text-xl font-bold text-indigo-700">🏆 Your Total Score: ${score} / 10!</span> Wonderful work studying geography!`;
+    }
+
+    // Render static preview list inside Teacher Dashboard
+    function renderPreviewExam() {
+      const container = document.getElementById('preview-exam-list');
+      container.innerHTML = "";
+
+      EXAM_DATA.forEach(q => {
+        let content = `<div class="bg-white rounded-xl p-4 shadow-sm border border-slate-200 space-y-2">`;
+        content += `<p class="font-bold text-slate-800">Q${q.num}. (${q.type.toUpperCase()}) ${q.question}</p>`;
+
+        if (q.type === 'mcq') {
+          content += `<div class="grid grid-cols-2 gap-2 text-xs pl-4 font-semibold text-slate-600">`;
+          Object.keys(q.options).forEach(key => {
+            const isCorr = key === q.correct ? '★ (Correct Answer)' : '';
+            content += `<p class="${key === q.correct ? 'text-emerald-600' : ''}">• Option ${key}: ${q.options[key]} ${isCorr}</p>`;
+          });
+          content += `</div>`;
+        } else if (q.type === 'match') {
+          content += `<p class="text-xs text-indigo-600 pl-4 font-semibold">Matched Pair: ${q.state} ➡️ ${q.capitol}</p>`;
+        } else if (q.type === 'fib') {
+          content += `<p class="text-xs text-indigo-600 pl-4 font-semibold">Correct Answer: ${q.correct}</p>`;
+        } else if (q.type === 'essay') {
+          content += `<p class="text-xs text-slate-500 pl-4"><strong>Teacher Rubric:</strong> ${q.rubric}</p>`;
+        }
+
+        content += `</div>`;
+        container.innerHTML += content;
+      });
+    }
+
+    // Clean Dynamic PDF generation utilizing browser-native styling or jsPDF drawing
+    function generatePDF(includeAnswerKey) {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({
+        orientation: "portrait",
+        unit: "in",
+        format: "letter"
+      });
+
+      // Simple Title & Branding Header
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(20);
+      doc.setTextColor(30, 41, 59); // Slate 800
+      doc.text("US State Capitols Exam - Grade 5", 0.75, 0.75);
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      doc.setTextColor(100, 116, 139); // Slate 500
+      doc.text(`Generated: Social Studies Curriculum Hub | ${includeAnswerKey ? 'TEACHER ANSWER KEY' : 'STUDENT EXAM COPY'}`, 0.75, 1.0);
+
+      // Student Name placeholder on Student Exam
+      if (!includeAnswerKey) {
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(30, 41, 59);
+        doc.text("STUDENT NAME: ___________________________________  DATE: ___________________", 0.75, 1.4);
+      }
+
+      // Add Horizontal Divider line
+      doc.setDrawColor(203, 213, 225);
+      doc.setLineWidth(0.02);
+      doc.line(0.75, 1.6, 7.75, 1.6);
+
+      // Draw content starting from top margin
+      let y = 1.9;
+      let pageNum = 1;
+
+      // Question Rendering Helper Function
+      function addLineWithWrap(text, fontStyle = "normal", fontSize = 11, color = [30, 41, 59]) {
+        doc.setFont("helvetica", fontStyle);
+        doc.setFontSize(fontSize);
+        doc.setTextColor(color[0], color[1], color[2]);
+        
+        const textLines = doc.splitTextToSize(text, 7.0);
+        textLines.forEach(line => {
+          // Keep boundaries clean, create page overflow
+          if (y > 9.8) {
+            doc.addPage();
+            pageNum++;
+            doc.setFontSize(9);
+            doc.setTextColor(148, 163, 184);
+            doc.text(`US State Capitols Exam | Page ${pageNum}`, 7.0, 10.5, { align: "right" });
+            y = 1.0;
+            // Restore current style context
+            doc.setFont("helvetica", fontStyle);
+            doc.setFontSize(fontSize);
+            doc.setTextColor(color[0], color[1], color[2]);
+          }
+          doc.text(line, 0.75, y);
+          y += 0.22;
+        });
+      }
+
+      EXAM_DATA.forEach(q => {
+        // Question header
+        addLineWithWrap(`Question ${q.num}. [${q.type.toUpperCase()}] ${q.question}`, "bold", 11);
+
+        // Sub options or answers formatting
+        if (q.type === 'mcq') {
+          Object.keys(q.options).forEach(key => {
+            let label = `   [  ]  ${key}. ${q.options[key]}`;
+            if (includeAnswerKey && key === q.correct) {
+              label = `   [X]  ${key}. ${q.options[key]}  ★(Correct Answer)`;
+              addLineWithWrap(label, "bold", 10, [16, 185, 129]); // Green bold correct
+            } else {
+              addLineWithWrap(label, "normal", 10, [100, 116, 139]);
+            }
+          });
+        } else if (q.type === 'match') {
+          if (includeAnswerKey) {
+            addLineWithWrap(`   Correct Connection Match: State -> [ ${q.state} ] matches with Capitol -> [ ${q.capitol} ]`, "bold", 10, [16, 185, 129]);
+          } else {
+            addLineWithWrap(`   Match: State of [ ${q.state} ] connects to what city? ____________________`, "normal", 10);
+          }
+        } else if (q.type === 'fib') {
+          if (includeAnswerKey) {
+            addLineWithWrap(`   Correct Answer: Honolulu`, "bold", 10, [16, 185, 129]);
+          } else {
+            addLineWithWrap(`   Answer write-in line: __________________________________________________`, "normal", 10);
+          }
+        } else if (q.type === 'essay') {
+          if (includeAnswerKey) {
+            addLineWithWrap(`   Teacher Grading Criteria: ${q.rubric}`, "bold", 9, [14, 116, 144]);
+            addLineWithWrap(`   Sample Answer: "${q.sampleAnswer}"`, "italic", 9, [100, 116, 139]);
+          } else {
+            y += 0.1;
+            addLineWithWrap("   __________________________________________________________________________________________", "normal", 10, [203, 213, 225]);
+            addLineWithWrap("   __________________________________________________________________________________________", "normal", 10, [203, 213, 225]);
+            addLineWithWrap("   __________________________________________________________________________________________", "normal", 10, [203, 213, 225]);
+          }
+        }
+
+        // Explanations for Answer Key
+        if (includeAnswerKey && q.explanation) {
+          addLineWithWrap(`   Explanation: ${q.explanation}`, "normal", 9.5, [100, 116, 139]);
+        }
+
+        y += 0.25; // Space between items
+      });
+
+      // Bottom Page Footer numbering
+      doc.setFontSize(9);
+      doc.setTextColor(148, 163, 184);
+      doc.text(`US State Capitols Exam | Page 1 of ${pageNum}`, 7.0, 10.5, { align: "right" });
+
+      const fileName = includeAnswerKey ? 'US_State_Capitols_Exam_Key.pdf' : 'US_State_Capitols_Exam_Student.pdf';
+      doc.save(fileName);
+    }
+
+    // Generate compliant Brightspace-friendly QTI XML document package
+    function downloadQTI() {
+      // Build standard IMS QTI 2.1 manifest wrapper XML structure
+      let xml = `<?xml version="1.0" encoding="UTF-8"?>
+<assessmentTest xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" 
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1 http://www.imsglobal.org/xsd/imsqti_v2p1/imsqti_v2p1.xsd" 
+                identifier="us_state_capitols_exam_g5" 
+                title="US State Capitols Exam - Grade 5">
+  <testPart navigationMode="linear" submissionMode="individual">
+    <assessmentSection identifier="section_1" title="US State Capitols Assessment" visible="true">
+`;
+
+      // Loop through and format items for LMS compatibility
+      EXAM_DATA.forEach(q => {
+        if (q.type === 'mcq') {
+          xml += `
+      <!-- Question ${q.num} MCQ -->
+      <assessmentItem identifier="item_${q.num}" title="US State Capitols Q${q.num}" adaptive="false" timeDependent="false">
+        <responseDeclaration identifier="RESPONSE" cardinality="single" baseType="identifier">
+          <correctResponse>
+            <value>Choice_${q.correct}</value>
+          </correctResponse>
+        </responseDeclaration>
+        <outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float" />
+        <itemBody>
+          <choiceInteraction responseIdentifier="RESPONSE" shuffle="false" maxChoices="1">
+            <prompt>${escapeXml(q.question)}</prompt>
+            <simpleChoice identifier="Choice_A">${escapeXml(q.options.A)}</simpleChoice>
+            <simpleChoice identifier="Choice_B">${escapeXml(q.options.B)}</simpleChoice>
+            <simpleChoice identifier="Choice_C">${escapeXml(q.options.C)}</simpleChoice>
+            <simpleChoice identifier="Choice_D">${escapeXml(q.options.D)}</simpleChoice>
+          </choiceInteraction>
+        </itemBody>
+        <feedbackResponse identifier="FEEDBACK" outcomeIdentifier="FEEDBACK" showHide="show">
+          <p>${escapeXml(q.explanation)}</p>
+        </feedbackResponse>
+      </assessmentItem>
+`;
+        } else if (q.type === 'match') {
+          xml += `
+      <!-- Question ${q.num} Matching Pair -->
+      <assessmentItem identifier="item_${q.num}" title="State Match Q${q.num}" adaptive="false" timeDependent="false">
+        <responseDeclaration identifier="RESPONSE" cardinality="single" baseType="identifier">
+          <correctResponse>
+            <value>Choice_${q.capitol}</value>
+          </correctResponse>
+        </responseDeclaration>
+        <itemBody>
+          <choiceInteraction responseIdentifier="RESPONSE" shuffle="false" maxChoices="1">
+            <prompt>${escapeXml(q.question)}</prompt>
+            <simpleChoice identifier="Choice_${q.capitol}">${escapeXml(q.capitol)}</simpleChoice>
+          </choiceInteraction>
+        </itemBody>
+      </assessmentItem>
+`;
+        } else if (q.type === 'fib') {
+          xml += `
+      <!-- Question ${q.num} Fill in the Blank -->
+      <assessmentItem identifier="item_${q.num}" title="Hawaii Capitol FIB Q${q.num}" adaptive="false" timeDependent="false">
+        <responseDeclaration identifier="RESPONSE" cardinality="single" baseType="string">
+          <correctResponse>
+            <value>${q.correct}</value>
+          </correctResponse>
+        </responseDeclaration>
+        <itemBody>
+          <textEntryInteraction responseIdentifier="RESPONSE" expectedLength="15">
+            <prompt>${escapeXml(q.question)}</prompt>
+          </textEntryInteraction>
+        </itemBody>
+      </assessmentItem>
+`;
+        } else if (q.type === 'essay') {
+          xml += `
+      <!-- Question ${q.num} Short Essay -->
+      <assessmentItem identifier="item_${q.num}" title="Capitol Selection Essay Q${q.num}" adaptive="false" timeDependent="false">
+        <itemBody>
+          <extendedTextInteraction responseIdentifier="RESPONSE" expectedLines="5">
+            <prompt>${escapeXml(q.question)}</prompt>
+          </extendedTextInteraction>
+        </itemBody>
+        <feedbackResponse identifier="RUBRIC">
+          <p>${escapeXml(q.rubric)}</p>
+        </feedbackResponse>
+      </assessmentItem>
+`;
+        }
+      });
+
+      xml += `
+    </assessmentSection>
+  </testPart>
+</assessmentTest>
+`;
+
+      // Trigger automatic package download as clean XML File
+      const blob = new Blob([xml], { type: "text/xml" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "brightspace_us_state_capitols_exam_qti.xml";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Helper to sanitize dynamic string data for XML nodes
+    function escapeXml(unsafe) {
+      return unsafe.replace(/[<>&'"]/g, function (c) {
+        switch (c) {
+          case '<': return '&lt;';
+          case '>': return '&gt;';
+          case '&': return '&amp;';
+          case '\'': return '&apos;';
+          case '"': return '&quot;';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
