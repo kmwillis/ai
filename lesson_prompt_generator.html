@@ -1,0 +1,277 @@
+
+<style>
+  .pg-wrap { padding: 1.5rem 0; font-family: var(--font-sans); max-width: 660px; }
+  .pg-section { margin-bottom: 1.25rem; }
+  label { display: block; font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px; font-weight: 500; }
+  input, select, textarea { width: 100%; box-sizing: border-box; }
+  textarea { height: 80px; resize: vertical; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .output-box {
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem 1.5rem;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--color-text-primary);
+    white-space: pre-wrap;
+    min-height: 120px;
+    display: none;
+  }
+  .output-box.visible { display: block; }
+  .tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    border: 0.5px solid var(--color-border-secondary);
+    background: var(--color-background-primary);
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .tag.selected {
+    background: var(--color-background-info);
+    color: var(--color-text-info);
+    border-color: var(--color-border-info);
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .copy-row { display: flex; gap: 10px; margin-top: 12px; align-items: center; }
+  .copy-msg { font-size: 12px; color: var(--color-text-success); opacity: 0; transition: opacity 0.3s; }
+  .copy-msg.show { opacity: 1; }
+  .char-hint { font-size: 12px; color: var(--color-text-tertiary); margin-top: 4px; }
+</style>
+
+<div class="pg-wrap">
+  <h2 class="sr-only">Lesson prompt generator for community college courses</h2>
+
+  <p class="section-title"><i class="ti ti-school" aria-hidden="true" style="font-size:18px; vertical-align:-2px; margin-right:8px;"></i>Lesson prompt generator</p>
+
+  <div class="pg-section">
+    <label>Course name / number</label>
+    <input type="text" id="course" placeholder="e.g. Introduction to Psychology — PSY 101" />
+  </div>
+
+  <div class="row2">
+    <div class="pg-section">
+      <label>Topic or unit</label>
+      <input type="text" id="topic" placeholder="e.g. Classical conditioning" />
+    </div>
+    <div class="pg-section">
+      <label>Lesson duration</label>
+      <select id="duration">
+        <option value="">Select...</option>
+        <option>50 minutes</option>
+        <option>75 minutes</option>
+        <option>90 minutes</option>
+        <option>2 hours</option>
+        <option>3 hours (lab/workshop)</option>
+        <option>Asynchronous / self-paced</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row2">
+    <div class="pg-section">
+      <label>Course level</label>
+      <select id="level">
+        <option value="">Select...</option>
+        <option>Developmental / remedial</option>
+        <option>100-level (introductory)</option>
+        <option>200-level (intermediate)</option>
+        <option>Transfer / honors</option>
+      </select>
+    </div>
+    <div class="pg-section">
+      <label>Delivery format</label>
+      <select id="format">
+        <option value="">Select...</option>
+        <option>In-person lecture</option>
+        <option>Hybrid (in-person + online)</option>
+        <option>Fully online (synchronous)</option>
+        <option>Fully online (asynchronous)</option>
+        <option>Lab / hands-on</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="pg-section">
+    <label>Learning objectives (what students should be able to do after this lesson)</label>
+    <textarea id="objectives" placeholder="e.g. Define classical conditioning; Identify conditioned and unconditioned stimuli in real-world scenarios; Apply Pavlov's model to human behavior examples"></textarea>
+  </div>
+
+  <div class="pg-section">
+    <label>Instructional strategies — select all that apply</label>
+    <div class="tag-group" id="strategies">
+      <span class="tag" data-val="lecture with discussion">Lecture + discussion</span>
+      <span class="tag" data-val="think-pair-share">Think-pair-share</span>
+      <span class="tag" data-val="case study analysis">Case study</span>
+      <span class="tag" data-val="cooperative group work">Group work</span>
+      <span class="tag" data-val="flipped classroom">Flipped classroom</span>
+      <span class="tag" data-val="problem-based learning">Problem-based</span>
+      <span class="tag" data-val="Socratic questioning">Socratic questioning</span>
+      <span class="tag" data-val="multimedia / video">Multimedia / video</span>
+      <span class="tag" data-val="hands-on lab or activity">Hands-on lab</span>
+      <span class="tag" data-val="guest speaker">Guest speaker</span>
+    </div>
+  </div>
+
+  <div class="pg-section">
+    <label>Assessment or check for understanding</label>
+    <div class="tag-group" id="assessment">
+      <span class="tag" data-val="exit ticket">Exit ticket</span>
+      <span class="tag" data-val="in-class quiz">In-class quiz</span>
+      <span class="tag" data-val="discussion post">Discussion post</span>
+      <span class="tag" data-val="short written reflection">Written reflection</span>
+      <span class="tag" data-val="group presentation">Group presentation</span>
+      <span class="tag" data-val="concept map or diagram">Concept map</span>
+      <span class="tag" data-val="no formal assessment this lesson">None this lesson</span>
+    </div>
+  </div>
+
+  <div class="row3">
+    <div class="pg-section">
+      <label>Student population</label>
+      <select id="population">
+        <option value="">Select...</option>
+        <option>Traditional (recent HS grads)</option>
+        <option>Adult / returning learners</option>
+        <option>Mixed ages</option>
+        <option>Dual enrollment (HS students)</option>
+        <option>ESL / multilingual learners</option>
+      </select>
+    </div>
+    <div class="pg-section">
+      <label>Class size</label>
+      <select id="classsize">
+        <option value="">Select...</option>
+        <option>Small (under 20)</option>
+        <option>Medium (20–35)</option>
+        <option>Large (35–50)</option>
+        <option>Very large (50+)</option>
+      </select>
+    </div>
+    <div class="pg-section">
+      <label>Special considerations</label>
+      <select id="special">
+        <option value="">None</option>
+        <option>Include ADA/UDL accommodations</option>
+        <option>Low-tech / no-device students</option>
+        <option>High proportion of first-gen students</option>
+        <option>Emphasize real-world / career application</option>
+        <option>Incorporate open educational resources (OER)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="pg-section">
+    <label>Anything else to include in the lesson (optional)</label>
+    <input type="text" id="extras" placeholder="e.g. Connect to upcoming exam, link to a specific textbook chapter, include a real-world news story..." />
+    <p class="char-hint">Leave blank if none.</p>
+  </div>
+
+  <button onclick="generatePrompt()" style="width:100%; margin-top:4px;">
+    <i class="ti ti-wand" aria-hidden="true" style="margin-right:6px; font-size:15px; vertical-align:-1px;"></i>Generate lesson prompt ↗
+  </button>
+
+  <div id="output-wrap" style="margin-top: 1.5rem;">
+    <div id="output" class="output-box"></div>
+    <div class="copy-row" id="copy-row" style="display:none;">
+      <button onclick="copyPrompt()"><i class="ti ti-copy" aria-hidden="true" style="margin-right:6px; font-size:14px; vertical-align:-1px;"></i>Copy prompt</button>
+      <span class="copy-msg" id="copy-msg"><i class="ti ti-check" aria-hidden="true"></i> Copied!</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.tag').forEach(tag => {
+    tag.addEventListener('click', () => tag.classList.toggle('selected'));
+  });
+
+  function getSelected(groupId) {
+    return [...document.querySelectorAll(`#${groupId} .tag.selected`)]
+      .map(t => t.dataset.val);
+  }
+
+  function v(id) { return document.getElementById(id).value.trim(); }
+
+  function generatePrompt() {
+    const course = v('course');
+    const topic = v('topic');
+    const duration = v('duration');
+    const level = v('level');
+    const format = v('format');
+    const objectives = v('objectives');
+    const population = v('population');
+    const classsize = v('classsize');
+    const special = v('special');
+    const extras = v('extras');
+    const strategies = getSelected('strategies');
+    const assessment = getSelected('assessment');
+
+    if (!topic) {
+      alert('Please enter a topic or unit before generating.');
+      return;
+    }
+
+    let lines = [];
+    lines.push(`You are an experienced community college professor designing a lesson plan. Please create a detailed, ready-to-use lesson plan with the following specifications:\n`);
+
+    if (course) lines.push(`Course: ${course}`);
+    lines.push(`Topic / unit: ${topic}`);
+    if (level) lines.push(`Course level: ${level}`);
+    if (duration) lines.push(`Class duration: ${duration}`);
+    if (format) lines.push(`Delivery format: ${format}`);
+    if (population) lines.push(`Student population: ${population}`);
+    if (classsize) lines.push(`Class size: ${classsize}`);
+
+    if (objectives) {
+      lines.push(`\nLearning objectives — by the end of this lesson, students should be able to:\n${objectives}`);
+    }
+
+    if (strategies.length > 0) {
+      lines.push(`\nInstructional strategies to incorporate: ${strategies.join(', ')}`);
+    }
+
+    if (assessment.length > 0) {
+      lines.push(`Assessment / check for understanding: ${assessment.join(', ')}`);
+    }
+
+    if (special && special !== 'None') {
+      lines.push(`Special consideration: ${special}`);
+    }
+
+    if (extras) {
+      lines.push(`Additional notes: ${extras}`);
+    }
+
+    lines.push(`\nPlease structure the lesson plan with:\n- Overview and rationale\n- Materials and preparation needed\n- Step-by-step lesson outline with approximate timing\n- Instructor notes and tips\n- Differentiation suggestions for diverse learners\n- The chosen assessment activity with instructions\n- A brief list of discussion questions or prompts`);
+
+    const prompt = lines.join('\n');
+
+    const out = document.getElementById('output');
+    out.textContent = prompt;
+    out.classList.add('visible');
+    document.getElementById('copy-row').style.display = 'flex';
+
+    sendPrompt(prompt);
+  }
+
+  function copyPrompt() {
+    const text = document.getElementById('output').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const msg = document.getElementById('copy-msg');
+      msg.classList.add('show');
+      setTimeout(() => msg.classList.remove('show'), 2000);
+    });
+  }
+</script>
